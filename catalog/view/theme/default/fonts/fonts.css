@@ -5,11 +5,11 @@
 @font-face {
     /*font-family: 'noto_sansbold';*/
     font-family: 'nsb';
-    src: url('notosans-bold-webfont.eot');
-    src: url('notosans-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('notosans-bold-webfont.woff2') format('woff2'),
-         url('notosans-bold-webfont.woff') format('woff'),
-         url('notosans-bold-webfont.ttf') format('truetype');
+    src: url('./notosans-bold-webfont.eot');
+    src: url('./notosans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./notosans-bold-webfont.woff2') format('woff2'),
+         url('./notosans-bold-webfont.woff') format('woff'),
+         url('./notosans-bold-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -21,11 +21,11 @@
 @font-face {
     /*font-family: 'noto_sansbold_italic';*/
     font-family: 'nsbi';
-    src: url('notosans-bolditalic-webfont.eot');
-    src: url('notosans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('notosans-bolditalic-webfont.woff2') format('woff2'),
-         url('notosans-bolditalic-webfont.woff') format('woff'),
-         url('notosans-bolditalic-webfont.ttf') format('truetype');
+    src: url('./notosans-bolditalic-webfont.eot');
+    src: url('./notosans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./notosans-bolditalic-webfont.woff2') format('woff2'),
+         url('./notosans-bolditalic-webfont.woff') format('woff'),
+         url('./notosans-bolditalic-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -37,11 +37,11 @@
 @font-face {
     /*font-family: 'noto_sansitalic';*/
     font-family: 'nsi';
-    src: url('notosans-italic-webfont.eot');
-    src: url('notosans-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('notosans-italic-webfont.woff2') format('woff2'),
-         url('notosans-italic-webfont.woff') format('woff'),
-         url('notosans-italic-webfont.ttf') format('truetype');
+    src: url('./notosans-italic-webfont.eot');
+    src: url('./notosans-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./notosans-italic-webfont.woff2') format('woff2'),
+         url('./notosans-italic-webfont.woff') format('woff'),
+         url('./notosans-italic-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -53,11 +53,11 @@
 @font-face {
     /*font-family: 'noto_sansregular';*/
     font-family: 'nsr';
-    src: url('notosans-regular-webfont.eot');
-    src: url('notosans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('notosans-regular-webfont.woff2') format('woff2'),
-         url('notosans-regular-webfont.woff') format('woff'),
-         url('notosans-regular-webfont.ttf') format('truetype');
+    src: url('./notosans-regular-webfont.eot');
+    src: url('./notosans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./notosans-regular-webfont.woff2') format('woff2'),
+         url('./notosans-regular-webfont.woff') format('woff'),
+         url('./notosans-regular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
