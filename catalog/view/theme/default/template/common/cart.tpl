@@ -3,7 +3,7 @@
         <i class="fa fa-shopping-cart"></i>
         <span id="cart-total"><?php echo $text_items; ?></span>
     </button> -->
-    <a href="<?php echo $cart; ?>">КОРЗИНА  (<span id="cart-total"><?php echo $text_items; ?>)</span></a>
+    <a href="<?php echo $cart; ?>">КОРЗИНА  (<span id="cart-total"><?php echo $text_items; ?></span>)</a>
   
   <ul class="dropdown-menu pull-right">
     <?php if ($products || $vouchers) { ?>
