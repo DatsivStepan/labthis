@@ -89,7 +89,7 @@
     });
 });
 
-/*Range Slider*/
+/*Range Slider
 $(document).ready(function() {
 	var snapSlider = document.getElementById('slider-range');
 
@@ -113,4 +113,4 @@ $(document).ready(function() {
 	snapSlider.noUiSlider.on('update', function( values, handle ) {
 		snapValues[handle].innerHTML = values[handle];
 	});
-});
+});*/

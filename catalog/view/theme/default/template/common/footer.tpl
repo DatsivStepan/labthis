@@ -1,3 +1,55 @@
+<div class="footer_wr mw clf">
+    <div class="footer bw clf">
+        <div class="foot_nav_box fl clf bs">
+            <ul class="clf">
+                <li><a href="#">главная</a></li>
+                <li><a href="#">О компании</a></li>
+                <li><a href="#">доставка и оплата</a></li>
+                <li><a href="#">контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="foot_nav_box fl clf bs">
+            <ul class="clf">
+                <?php foreach($categories_menu as $category){ ?>
+                    <li><a href="../../../../index.php?route=product/category&amp;path=<?= $category['category_id']; ?>"><?= $category['name']; ?></a></li>
+                <?php } ?>
+            </ul>
+        </div>
+
+        <div class="foot_info_box fr clf">
+            <ul class="foot_info clf fl">
+                <li>Адрес: <?= $address; ?></li>
+                <li>Телефон: <a href="tel:<?= $telephone; ?>"><?= $telephone; ?></a></li>
+                <li>E-mail: <a href="mailto:<?= $email; ?>"><?= $email; ?></a></li>
+                <li>Режим работы: <?= $open; ?></li>
+            </ul>
+
+            <div class="app_box fr clf">
+                <ul class="clf">
+                    <li>Мы есть в </li>
+                    <li>
+                        <a href="#">
+                            <img src="../../../image/catalog/ico/wat.png" alt="img">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../../../image/catalog/ico/vib.png" alt="img">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="split_box fl cb"></div>
+
+        <div class="copy_box fl clf">
+            <p>© 2016 Лаборатория средств защиты <a target="_blank" href="#">«Labsiz»</a>. Все права защищены.</p>
+        </div>
+    </div>
+</div>
+<!--
 <footer>
   <div class="container">
     <div class="row">
@@ -41,7 +93,7 @@
     <hr>
     <p><?php echo $powered; ?></p> 
   </div>
-</footer>
+</footer>-->
 
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.

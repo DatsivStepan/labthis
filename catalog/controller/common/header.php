@@ -64,7 +64,7 @@ class ControllerCommonHeader extends Controller {
 		$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
-
+		$data['address'] = $this->config->get('config_address');
 		$status = true;
 
 		if (isset($this->request->server['HTTP_USER_AGENT'])) {
@@ -87,8 +87,9 @@ class ControllerCommonHeader extends Controller {
 		$data['categories'] = array();
 
 		$categories = $this->model_catalog_category->getCategories(0);
-
-		foreach ($categories as $category) {
+		$data['categories_menu'] = $categories;
+                //var_dump($categories);exit;
+                foreach ($categories as $category) {
 			if ($category['top']) {
 				// Level 2
 				$children_data = array();
@@ -116,7 +117,7 @@ class ControllerCommonHeader extends Controller {
 				);
 			}
 		}
-
+                
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');

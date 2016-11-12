@@ -33,12 +33,12 @@
 <link href="catalog/view/theme/default/stylesheet/main.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/slick.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/slick-theme.css" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/nouislider.min.css" rel="stylesheet">
+<!--<link href="catalog/view/theme/default/stylesheet/nouislider.min.css" rel="stylesheet">-->
 <link href="catalog/view/theme/default/stylesheet/jquery.formstyler.css" rel="stylesheet">
 <link href="catalog/view/theme/default/fonts/fonts.css" rel="stylesheet">
 
 <script src="catalog/view/javascript/slick.js" type="text/javascript"></script>
-<script src="catalog/view/javascript/nouislider.js" type="text/javascript"></script>
+<!--<script src="catalog/view/javascript/nouislider.js" type="text/javascript"></script>-->
 <script src="catalog/view/javascript/wNumb.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/jquery.formstyler.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/script.js" type="text/javascript"></script>
@@ -56,13 +56,13 @@
 <div class="sticky_nav_wr mw clf">
     <div class="sticky_nav bw clf">
         <ul class="clf fl">
-            <li><a class="nav_locat" href="#">Москва, ул. Производственная, 21</a></li>
-            <li><a class="nav_tel" href="tel:+79268430389">+7 (926) 843-03-89</a></li>
+            <li><a class="nav_locat" href="#"><?= $address; ?></a></li>
+            <li><a class="nav_tel" href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a></li>
             <li><a class="nav_app" href="#">Мы есть в Whatsapp / Viber</a></li>
         </ul>
 
         <div class="bucket_boc fr clf">
-            <a href="basket.html">КОРЗИНА <span>(0)</span></a>
+            <?php echo $cart; ?>
         </div>
     </div>
 </div>
@@ -83,17 +83,18 @@
             <li><a href="contact.html">Контакты</a></li>
         </ul>
 
-        <div class="nav_search clf fr">
-            <input type="text" name="" value="" placeholder="Поиск по сайту">
-            <button type="submit"></button>
+        <div class="nav_search clf fr" id="search">
+            <?= $search; ?>
         </div>
 
         <div class="main_nav_sub fr cb clf">
             <ul class="clf">
-                <li><a href="srestva_zash_lv1.html">Испытание средств защиты</a></li>
-                <li><a href="magazin.html">Магазин средств защиты</a></li>
-                <li><a href="catalog.html">Каталог услуг</a></li>
-                <li><a href="srestva_zash_lv2.html">Нормы комплектации средствами защиты</a></li>
+                <?php foreach($categories_menu as $category){ ?>
+                <li><a href="../../../../index.php?route=product/category&amp;path=<?= $category['category_id']; ?>"><?= $category['name']; ?></a></li>
+                <?php } ?>
+                    <!--<li><a href="magazin.html">Магазин средств защиты</a></li>
+                    <li><a href="catalog.html">Каталог услуг</a></li>
+                    <li><a href="srestva_zash_lv2.html">Нормы комплектации средствами защиты</a></li>-->
             </ul>
         </div>
     </div>
@@ -126,7 +127,7 @@
     </div>
   </div>
 </nav> -->
-<header>
+<!--<header>
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
@@ -138,9 +139,9 @@
           <?php } ?>
         </div>
       </div>
-      <div class="col-sm-5"><?php echo $search; ?>
+      <div class="col-sm-5"><?php //echo $search; ?>
       </div>
-      <div class="col-sm-3"><?php echo $cart; ?></div>
+      <div class="col-sm-3"><?php //echo $cart; ?></div>
     </div>
   </div>
 </header>
@@ -175,4 +176,4 @@
     </div>
   </nav>
 </div>
-<?php } ?>
+<?php } ?> -->
