@@ -17,9 +17,16 @@ class ControllerCommonFooter extends Controller {
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
+                $data['telephone'] = $this->config->get('config_telephone');
+		$data['address'] = $this->config->get('config_address');
+		$data['email'] = $this->config->get('config_email');
+		$data['open'] = $this->config->get('config_open');
 
-		$this->load->model('catalog/information');
-
+                $this->load->model('catalog/information');
+                $this->load->model('catalog/category');
+                $categories = $this->model_catalog_category->getCategories(0);
+		$data['categories_menu'] = $categories;
+                
 		$data['informations'] = array();
 
 		foreach ($this->model_catalog_information->getInformations() as $result) {
