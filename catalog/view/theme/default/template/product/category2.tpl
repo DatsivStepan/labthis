@@ -23,13 +23,6 @@
                         <span><?=$category['name'];?></span>
                     </a>
                 </li>
-                <!--<div class="col-sm-3">
-                    <ul>
-                        <?php foreach ($categories as $category) { ?>
-                        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                        <?php } ?>
-                    </ul>
-                </div>-->
                 <?php } ?>
             </ul>
         </div>
@@ -77,90 +70,120 @@
         </div>
     </div>
     <br/>-->
-    <div class="back_box_wr mw clf">
-        <div class="box_filtr fl clf">
-            <p class="fl">Сортировать по:</p>
-            <a class="fl" href="#">популярности</a>
-        </div>
-
-        <div class="range_sl_box fr clf">
-
-            <p class="fl clf">Цена, руб.</p>
-
-            <div class="range_box fl clf">
-                <span id="min_price" class="fl clf">0</span>
-                <span id="max_price" class="fr clf">7500</span>
-
-                <div id="slider-range" class="noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-origin" style="left: 0%;"><div class="noUi-handle" data-handle="0" style="z-index: 5;"></div></div><div class="noUi-connect" style="left: 0%; right: 25%;"></div><div class="noUi-origin" style="left: 75%;"><div class="noUi-handle" data-handle="1" style="z-index: 4;"></div></div></div></div>
+    <div class="cont_box bw clf">
+        <div class="back_box_wr mw clf">
+            <div class="box_filtr fl clf">
+                <p class="fl">Сортировать по:</p>
+                <a class="fl" href="#">популярности</a>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <?php foreach ($products as $product) { ?>
-        <div class="product-layout product-list col-xs-12">
-            <div class="product-thumb">
-                <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>"
-                                                                                  alt="<?php echo $product['name']; ?>"
-                                                                                  title="<?php echo $product['name']; ?>"
-                                                                                  class="img-responsive"/></a></div>
-                <div>
-                    <div class="caption">
-                        <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-                        <p><?php echo $product['description']; ?></p>
-                        <?php if ($product['rating']) { ?>
-                        <div class="rating">
-                            <?php for ($i = 1; $i <= 5; $i++) { ?>
-                            <?php if ($product['rating'] < $i) { ?>
-                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                            <?php } else { ?>
-                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                        class="fa fa-star-o fa-stack-2x"></i></span>
-                            <?php } ?>
-                            <?php } ?>
-                        </div>
-                        <?php } ?>
-                        <?php if ($product['price']) { ?>
-                        <p class="price">
-                            <?php if (!$product['special']) { ?>
-                            <?php echo $product['price']; ?>
-                            <?php } else { ?>
-                            <span class="price-new"><?php echo $product['special']; ?></span> <span
-                                    class="price-old"><?php echo $product['price']; ?></span>
-                            <?php } ?>
-                            <?php if ($product['tax']) { ?>
-                            <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                            <?php } ?>
-                        </p>
-                        <?php } ?>
-                    </div>
-                    <div class="button-group">
-                        <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i
-                                    class="fa fa-shopping-cart"></i> <span
-                                    class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
-                        <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>"
-                                onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i
-                                    class="fa fa-heart"></i></button>
-                        <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>"
-                                onclick="compare.add('<?php echo $product['product_id']; ?>');"><i
-                                    class="fa fa-exchange"></i></button>
-                    </div>
+
+            <div class="range_sl_box fr clf">
+                <p class="fl clf">Цена, руб.</p>
+                <div class="range_box fl clf">
+                    <span id="min_price" class="fl clf"></span>
+                    <span id="max_price" class="fr clf"></span>
+                    <div id="slider-range"></div>
                 </div>
             </div>
         </div>
-        <?php } ?>
     </div>
-    <div class="row">
+    <div class="cont_box bw clf">
+        <!--<div class="row">
+            <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
+            <div class="col-sm-3">
+                <ul>
+                    <?php foreach ($categories as $category) { ?>
+                    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+            <?php } ?>
+        </div>-->
+        <?php if (count($products) <= 5) { ?>
+        <div class="item_list_box fix_m mw clf">
+            <?php foreach ($products as $product) { ?>
+            <!--Product Item-->
+            <div class="product_item bshd clf">
+                <div class="img_box mw clf">
+                    <a href="<?=$product['href'];?>">
+                        <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
+                    </a>
+                </div>
+                <div class="it_text_box">
+                    <p class="it_name fl clf"><?=$product['name']; ?></p>
+                    <p class="it_articul fl clf"><?=$product['model']; ?></p>
+                </div>
+                <span class="it_split mw clf"></span>
+
+                <div class="it_price_box mw clf">
+                    <span class="it_price fl clf">360 руб.</span>
+
+                    <div class="namber_box section number-plus-minus fr clf" id="product_<?=$product['product_id']; ?>">
+                        <input type="number" value="1" min="1" step="1"/>
+                    </div>
+                </div>
+
+
+                <div class="it_info_box mw clf">
+                    <p>Товар прошел лабораторные испытания</p>
+                    <img src="./image/catalog/ico/check.jpg" alt="img">
+                </div>
+
+                <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+            </div>
+            <?php } ?>
+        </div>
+        <?php } else { ?>
+        <?php foreach (array_chunk($products, ceil(count($products) / 4)) as $products) { ?>
+        <div class="item_list_box fix_m mw clf">
+            <?php foreach ($products as $product) { ?>
+            <!--Product Item-->
+            <div class="product_item bshd clf">
+                <div class="img_box mw clf">
+                    <a href="<?=$product['href'];?>">
+                        <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
+                    </a>
+                </div>
+                <div class="it_text_box">
+                    <p class="it_name fl clf"><?=$product['name']; ?></p>
+                    <p class="it_articul fl clf"><?=$product['model']; ?></p>
+                </div>
+                <span class="it_split mw clf"></span>
+
+                <div class="it_price_box mw clf">
+                    <span class="it_price fl clf">360 руб.</span>
+
+                    <div class="namber_box section number-plus-minus fr clf">
+                        <input type="number" value="1" min="1" step="1"/>
+                    </div>
+                </div>
+
+
+                <div class="it_info_box mw clf">
+                    <p>Товар прошел лабораторные испытания</p>
+                    <img src="./image/catalog/ico/check.jpg" alt="img">
+                </div>
+
+                <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+            </div>
+            <?php } ?>
+        </div>
+        <?php } ?>
+        <?php } ?>
+
+    </div>
+    <!--<div class="row">
         <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
         <div class="col-sm-6 text-right"><?php echo $results; ?></div>
-    </div>
+    </div>-->
     <?php } ?>
-    <?php if (!$categories && !$products) { ?>
+    <!--<?php if (!$categories && !$products) { ?>
     <p><?php echo $text_empty; ?></p>
     <div class="buttons">
         <div class="pull-right"><a href="<?php echo $continue; ?>"
                                    class="btn btn-primary"><?php echo $button_continue; ?></a></div>
     </div>
-    <?php } ?>
+    <?php } ?>-->
 </div>
 </div>
 <?php echo $footer; ?>

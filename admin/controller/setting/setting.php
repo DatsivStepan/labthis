@@ -504,6 +504,18 @@ class ControllerSettingSetting extends Controller {
 			$data['config_telephone'] = $this->config->get('config_telephone');
 		}
 
+		if (isset($this->request->post['config_whatsapp'])) {
+			$data['config_whatsapp'] = $this->request->post['config_whatsapp'];
+		} else {
+			$data['config_whatsapp'] = $this->config->get('config_whatsapp');
+		}
+
+		if (isset($this->request->post['config_viber'])) {
+			$data['config_viber'] = $this->request->post['config_viber'];
+		} else {
+			$data['config_viber'] = $this->config->get('config_viber');
+		}
+
 		if (isset($this->request->post['config_fax'])) {
 			$data['config_fax'] = $this->request->post['config_fax'];
 		} else {

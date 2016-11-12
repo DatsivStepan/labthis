@@ -95,6 +95,18 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-whatsapp">Whatsapp</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_whatsapp" value="<?php echo $config_whatsapp; ?>" placeholder="Whatsapp" id="input-whatsapp" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-viber">Viber</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_viber" value="<?php echo $config_viber; ?>" placeholder="Viber" id="input-viber" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="config_fax" value="<?php echo $config_fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" class="form-control" />

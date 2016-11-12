@@ -2,6 +2,8 @@
 class ControllerProductCategory extends Controller {
 	public function index() {
 		$this->document->addScript('catalog/view/javascript/category.js');
+		$this->document->addStyle('/catalog/view/theme/default/stylesheet/nouislider.min.css');
+		$this->document->addScript('catalog/view/javascript/nouislider.js');
 		$this->load->language('product/category');
 
 		$this->load->model('catalog/category');
@@ -159,7 +161,7 @@ class ControllerProductCategory extends Controller {
 					'filter_category_id'  => $result['category_id'],
 					'filter_sub_category' => true
 				);
-				
+
 
 				$data['categories'][] = array(
 					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
@@ -218,6 +220,7 @@ class ControllerProductCategory extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
+					'model'        => $result['model'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
