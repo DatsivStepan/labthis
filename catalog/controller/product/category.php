@@ -1,6 +1,7 @@
 <?php
 class ControllerProductCategory extends Controller {
 	public function index() {
+		$this->document->addScript('catalog/view/javascript/category.js');
 		$this->load->language('product/category');
 
 		$this->load->model('catalog/category');
@@ -158,10 +159,12 @@ class ControllerProductCategory extends Controller {
 					'filter_category_id'  => $result['category_id'],
 					'filter_sub_category' => true
 				);
+				
 
 				$data['categories'][] = array(
 					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
+					'image'  => $this->model_tool_image->resize($result['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'))
 				);
 			}
 
@@ -361,11 +364,29 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
+			switch($category_id){
+				case 59:{
+					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
+						$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category.tpl', $data));
+					} else {
+						$this->response->setOutput($this->load->view('default/template/product/category.tpl', $data));
+					}
+					break;
+				}
+				default:{
+					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category2.tpl')) {
+						$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category2.tpl', $data));
+					} else {
+						$this->response->setOutput($this->load->view('default/template/product/category2.tpl', $data));
+					}
+				}
+			}
+
+			/*if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
 				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category.tpl', $data));
 			} else {
 				$this->response->setOutput($this->load->view('default/template/product/category.tpl', $data));
-			}
+			}*/
 		} else {
 			$url = '';
 
