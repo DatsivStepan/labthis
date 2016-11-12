@@ -3,6 +3,8 @@ class ControllerProductProduct extends Controller {
 	private $error = array();
 
 	public function index() {
+		if ($this->config->get('occm_status'))
+		$this->document->addScript($this->url->link('module/occm/js','','SSL'));
 		$this->load->language('product/product');
 
 		$data['breadcrumbs'] = array();
