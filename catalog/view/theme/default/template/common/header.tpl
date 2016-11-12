@@ -33,7 +33,7 @@
 <link href="catalog/view/theme/default/stylesheet/main.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/slick.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/slick-theme.css" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/nouislider.min.css.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/nouislider.min.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/jquery.formstyler.css" rel="stylesheet">
 <link href="catalog/view/theme/default/fonts/fonts.css" rel="stylesheet">
 
@@ -63,6 +63,38 @@
 
         <div class="bucket_boc fr clf">
             <a href="basket.html">КОРЗИНА <span>(0)</span></a>
+        </div>
+    </div>
+</div>
+<div class="main_nav_wr mw clf">
+    <div class="main_nav bw clf">
+        <!--<a class="logo fl clf" href="index.html">
+            <img src="img/logo.png" alt="img">
+        </a> -->
+        <?php if ($logo) { ?>
+            <a class="logo fl clf" href="<?php echo $home; ?>">
+                <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="img" />
+            </a>
+        <?php } ?>
+
+        <ul class="main_nav_box fl clf">
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="dostavka_oplata.html">Доставка и оплата</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+
+        <div class="nav_search clf fr">
+            <input type="text" name="" value="" placeholder="Поиск по сайту">
+            <button type="submit"></button>
+        </div>
+
+        <div class="main_nav_sub fr cb clf">
+            <ul class="clf">
+                <li><a href="srestva_zash_lv1.html">Испытание средств защиты</a></li>
+                <li><a href="magazin.html">Магазин средств защиты</a></li>
+                <li><a href="catalog.html">Каталог услуг</a></li>
+                <li><a href="srestva_zash_lv2.html">Нормы комплектации средствами защиты</a></li>
+            </ul>
         </div>
     </div>
 </div>
