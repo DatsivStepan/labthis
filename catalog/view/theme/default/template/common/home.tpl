@@ -37,10 +37,10 @@
                 <div class="section_box bw clf">
                     <ul class="clf">
                         <?php foreach($categories_menu as $key => $category){ ?>
-                                <?php if($key < 3){ ?>
+                                <?php if($category['category_id'] != 60){ ?>
                                     <li>
-                                        <a href="#">
-                                            <img src="<?= $category['image']; ?>" alt="img">
+                                        <a href="/index.php?route=product/category&path=<?= $category['category_id']; ?>">
+                                            <img src="image/<?= $category['image']; ?>" alt="img">
                                             <div class="filtr_box clf"></div>
                                             <div class="sect_text"><?= $category['name']; ?></div>
                                         </a>

@@ -2,10 +2,10 @@
     <div class="footer bw clf">
         <div class="foot_nav_box fl clf bs">
             <ul class="clf">
-                <li><a href="#">главная</a></li>
-                <li><a href="#">О компании</a></li>
-                <li><a href="#">доставка и оплата</a></li>
-                <li><a href="#">контакты</a></li>
+                <li><a href="/">главная</a></li>
+                <li><a href="../../../index.php?route=information/information&information_id=4">О компании</a></li>
+                <li><a href="../../../index.php?route=information/information&information_id=6">Доставка и оплата</a></li>
+                <li><a href="../../../index.php?route=information/contact">Контакты</a></li>
             </ul>
         </div>
 

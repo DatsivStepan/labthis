@@ -78,9 +78,9 @@
         <?php } ?>
 
         <ul class="main_nav_box fl clf">
-            <li><a href="about.html">О компании</a></li>
-            <li><a href="dostavka_oplata.html">Доставка и оплата</a></li>
-            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="../../../index.php?route=information/information&information_id=4">О компании</a></li>
+            <li><a href="../../../index.php?route=information/information&information_id=6">Доставка и оплата</a></li>
+            <li><a href="../../../index.php?route=information/contact">Контакты</a></li>
         </ul>
 
         <div class="nav_search clf fr" id="search">
