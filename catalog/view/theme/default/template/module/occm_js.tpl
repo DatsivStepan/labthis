@@ -69,7 +69,7 @@ function occmAjaxPostAdd(uri, dataSet) {
 			$("#button-cart").after('<script src="catalog/view/javascript/occm/jquery.colorbox-min.js" type="text/javascript"></script>');
 			$("#button-cart").after('<link href="catalog/view/javascript/occm/colorbox.css" rel="stylesheet" media="screen" />');
 		}
-		$("#button-cart").after('<input type="button" value="<?php echo $z->l('Buy one click') ?>" class="btn btn-primary btn-lg btn-block button occm-button" />');
+		$("#button-cart").after('<input type="button" value="Быстрый заказ" class="bay_btn_f hb mw clf occm-button" style="background-color: transparent;" />');
 		$("input.occm-button").click(function() {
 			$.ajax({
 				url: '<?php echo $z->url->link('module/occm/add','','SSL') ?>',
@@ -77,7 +77,7 @@ function occmAjaxPostAdd(uri, dataSet) {
 				data: $('<?php echo $productSelectorPrefix ?> input[type=\'text\'], <?php echo $productSelectorPrefix ?> input[type=\'hidden\'], <?php echo $productSelectorPrefix ?> input[type=\'radio\']:checked, <?php echo $productSelectorPrefix ?> input[type=\'checkbox\']:checked, <?php echo $productSelectorPrefix ?> select, <?php echo $productSelectorPrefix ?> textarea'),
 				dataType: 'json',
 				success: function(json) {
-					$('.success, .warning, .attention, information, .error, .text-danger').remove();
+                                	$('.success, .warning, .attention, information, .error, .text-danger').remove();
 					if (json['error']) {
 						if (json['error']['option']) {
 							for (i in json['error']['option']) {
