@@ -60,6 +60,7 @@
         </div>
     </div>
     <br/>-->
+    <?php if (!$categories && !$products) { ?>
     <div class="cont_box bw clf">
         <div class="back_box_wr mw clf">
             <input type="hidden" value="<?=$base_url; ?>">
@@ -91,6 +92,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <?php if ($products) { ?>
     <div class="cont_box bw clf">
         <?php if (count($products) <= 5) { ?>
