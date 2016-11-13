@@ -94,6 +94,39 @@
     </div>
     <?php } ?>
     <?php if ($products) { ?>
+
+    <div class="cont_box bw clf">
+        <div class="back_box_wr mw clf">
+            <input type="hidden" value="<?=$base_url; ?>">
+            <div class="box_filtr fl clf">
+                <p class="fl">Сортировать по:</p>
+
+                <?php $i=0; foreach ($sorts as $sorts) { ?>
+                <?php if ($sorts['value'] == $sort . '-' . $order && $order == 'DESC') { ?>
+                <!--<option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>-->
+                <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+                <?php } elseif($sorts['value'] == $sort . '-' . $order && $order == 'ASC') { ?>
+                <!--<option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>-->
+                <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
+                <?php } ?>
+                <?php if(isset($order) && empty($order) && $i == 1){ ?>
+                <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+                <?php } $i++; ?>
+                <?php } ?>
+
+            </div>
+
+            <div class="range_sl_box fr clf">
+                <p class="fl clf">Цена, руб.</p>
+                <div class="range_box fl clf">
+                    <span id="min_price" class="fl clf"></span>
+                    <span id="max_price" class="fr clf"></span>
+                    <div id="slider-range"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="cont_box bw clf">
         <?php if (count($products) <= 5) { ?>
         <div class="item_list_box fix_m mw clf">
