@@ -1,20 +1,60 @@
 <?php echo $header; ?>
+<div class="way_wr_box mw clf">
+    <div class="way_box bw clf">
+        <ul class="clf">
+            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+                <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+            <?php } ?>
+        </ul>
+
+        <p class="way_art fl clf"><?php echo $heading_title; ?></p>
+    </div>
+</div>
+
+<div class="cont_wr mw clf">
+    <!--Content Box-->
+    <div class="cont_box bw clf">
+        <div class="item_list_box fix_m mw clf">
+            <?php foreach ($products as $product) { ?>
+            <!--Product Item-->
+            <div class="product_item bshd clf">
+                <div class="img_box mw clf">
+                    <a href="<?=$product['href'];?>">
+                        <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
+                    </a>
+                </div>
+                <div class="it_text_box">
+                    <p class="it_name fl clf"><?=$product['name']; ?></p>
+                    <p class="it_articul fl clf"><?=$product['model']; ?></p>
+                </div>
+                <span class="it_split mw clf"></span>
+
+                <div class="it_price_box mw clf">
+                    <span class="it_price fl clf">360 руб.</span>
+
+                    <div class="namber_box section number-plus-minus fr clf">
+                        <input type="number" value="1" min="1" step="1"/>
+                    </div>
+                </div>
+
+
+                <div class="it_info_box mw clf">
+                    <p>Товар прошел лабораторные испытания</p>
+                    <img src="./image/catalog/ico/check.jpg" alt="img">
+                </div>
+
+                <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+
+</div>
+
+<!--
 <div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
+  <div class="row">
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
       <label class="control-label" for="input-search"><?php echo $entry_search; ?></label>
       <div class="row">
         <div class="col-sm-4">
@@ -156,7 +196,7 @@
       <?php } ?>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
-</div>
+</div> -->
 <script type="text/javascript"><!--
 $('#button-search').bind('click', function() {
 	url = 'index.php?route=product/search';

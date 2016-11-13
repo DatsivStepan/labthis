@@ -4,5 +4,7 @@
     <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
   </span>
 </div>-->
+<div id="search">
     <input type="text" name="search" value="<?php echo $search; ?>" placeholder="<?php echo $text_search; ?>">
     <button type="submit"></button>
+</div>
