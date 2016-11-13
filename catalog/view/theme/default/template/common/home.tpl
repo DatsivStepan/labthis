@@ -29,7 +29,7 @@
                             <p>Предоставление</br> комплексных видов</br> услуг</p>
                         </li>
                     </ul>
-                </div>                
+                </div>
             </div>
 
             <!--Section Box Wrap-->
@@ -53,12 +53,12 @@
 
             <!--Product Slider-->
             <?php echo $content_bottom; ?>
-            
+
 
             <!--Fid Box-->
             <div class="fib_box_wr mw clf">
                 <div class="fib_box bw clf">
-                    
+
                     <div class="fib_box_lt font_stl fl clf">
 
                         <div class="fib_box_text mw clf">
@@ -85,7 +85,7 @@
                         <span class="fib_box_spl"></span>
                         <span class="call_back clf">Позвоните нам</span>
                         <a class="fid_namb" href="tel:<?= $telephone; ?>"><?= $telephone; ?></a>
-                        <a class="call_btn hb" href="#">Заказать звонок</a>
+                        <a class="call_btn hb callme" href="#">Заказать звонок</a>
                     </div>
                 </div>
             </div>
