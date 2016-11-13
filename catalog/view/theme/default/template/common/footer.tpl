@@ -29,12 +29,12 @@
                 <ul class="clf">
                     <li>Мы есть в </li>
                     <li>
-                        <a href="#">
+                        <a href="<?= $whatsapp; ?>">
                             <img src="../../../image/catalog/ico/wat.png" alt="img">
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="<?= $viber; ?>">
                             <img src="../../../image/catalog/ico/vib.png" alt="img">
                         </a>
                     </li>

@@ -21,6 +21,8 @@ class ControllerCommonFooter extends Controller {
 		$data['address'] = $this->config->get('config_address');
 		$data['email'] = $this->config->get('config_email');
 		$data['open'] = $this->config->get('config_open');
+		$data['viber'] = $this->config->get('config_viber');
+		$data['whatsapp'] = $this->config->get('config_whatsapp');
 
                 $this->load->model('catalog/information');
                 $this->load->model('catalog/category');
@@ -37,7 +39,6 @@ class ControllerCommonFooter extends Controller {
 				);
 			}
 		}
-
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', 'SSL');
 		$data['sitemap'] = $this->url->link('information/sitemap');

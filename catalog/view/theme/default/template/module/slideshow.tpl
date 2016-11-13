@@ -1,19 +1,19 @@
 <div class="main_sl_box mw clf">
-    
-    <div id="slideshow<?php echo $module; ?>" class="owl-carousel" style="opacity: 1;">
+
         <?php foreach ($banners as $banner) { ?>
-          <div class="item">
-            <?php if ($banner['link']) { ?>
-            <a href="<?php echo $banner['link']; ?>">
-                <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive"  style='width: 100%;' /></a>
-            <?php } else { ?>
-            <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive"  style='width: 100%;' />
-            <?php } ?>
+            <div class="ls_item_box">
+                <?php if ($banner['link']) { ?>
+                    <img src="<?php echo $banner['image']; ?>">
+                <?php } else { ?>
+                    <img src="<?php echo $banner['image']; ?>">
+                <?php } ?>
+                <div class="ls_item">
+                    <!--<p>Лучшие цены на испытания<br/> в Москве и Московской<br/> области</p>-->
+                </div>
           </div>
         <?php } ?>
-    </div>
     
-</div>
+</div> 
 <script type="text/javascript"><!--
 $('#slideshow<?php echo $module; ?>').owlCarousel({
 	items: 6,
