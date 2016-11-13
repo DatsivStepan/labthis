@@ -24,10 +24,26 @@ class ControllerProductCategory extends Controller {
 			$sort = 'p.sort_order';
 		}
 
+		if (isset($this->request->get['price1'])) {
+			$price1 = $this->request->get['price1'];
+			$data['price1'] = $this->request->get['price1'];
+		} else {
+			$price1 = '0';
+			$data['price1'] = 0;
+		}
+
+		if (isset($this->request->get['price2'])) {
+			$price2 = $this->request->get['price2'];
+			$data['price2'] = $this->request->get['price2'];
+		} else {
+			$data['price2'] = 7500;
+			$price2 = '7500';
+		}
+
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'ASC';
+			$order = '';
 		}
 
 		if (isset($this->request->get['page'])) {
@@ -54,6 +70,16 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['price1'])) {
+				$url .= '&price1=' . $this->request->get['price1'];
+				$data['price1'] = $this->request->get['price1'];
+			}
+
+			if (isset($this->request->get['price2'])) {
+				$url .= '&price2=' . $this->request->get['price2'];
+				$data['price2'] = $this->request->get['price2'];
 			}
 
 			if (isset($this->request->get['order'])) {
@@ -144,6 +170,18 @@ class ControllerProductCategory extends Controller {
 				$url .= '&sort=' . $this->request->get['sort'];
 			}
 
+			if (isset($this->request->get['price1'])) {
+				$url .= '&price1=' . $this->request->get['price1'];
+				$data['price1'] = $this->request->get['price1'];
+				$data['price1'] = $this->request->get['price1'];
+			}
+
+			if (isset($this->request->get['price2'])) {
+				$url .= '&price2=' . $this->request->get['price2'];
+				$data['price2'] = $this->request->get['price2'];
+				$data['price2'] = $this->request->get['price2'];
+			}
+
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
 			}
@@ -177,6 +215,8 @@ class ControllerProductCategory extends Controller {
 				'filter_filter'      => $filter,
 				'sort'               => $sort,
 				'order'              => $order,
+				'price1'              => $price1,
+				'price2'              => $price2,
 				'start'              => ($page - 1) * $limit,
 				'limit'              => $limit
 			);
@@ -239,10 +279,17 @@ class ControllerProductCategory extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
+			if (isset($this->request->get['price1'])) {
+				$url .= '&price1=' . $this->request->get['price1'];
+			}
+
+			if (isset($this->request->get['price2'])) {
+				$url .= '&price2=' . $this->request->get['price2'];
+			}
 
 			$data['sorts'] = array();
 
-			$data['sorts'][] = array(
+			/*$data['sorts'][] = array(
 				'text'  => $this->language->get('text_default'),
 				'value' => 'p.sort_order-ASC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.sort_order&order=ASC' . $url)
@@ -270,23 +317,22 @@ class ControllerProductCategory extends Controller {
 				'text'  => $this->language->get('text_price_desc'),
 				'value' => 'p.price-DESC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=DESC' . $url)
-			);
+			);*/
 
-			if ($this->config->get('config_review_status')) {
+			//if ($this->config->get('config_review_status')) {
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_desc'),
 					'value' => 'rating-DESC',
-					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=DESC' . $url)
+					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=ASC' . $url)
 				);
 
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_asc'),
 					'value' => 'rating-ASC',
-					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=ASC' . $url)
+					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=DESC' . $url)
 				);
-			}
-
-			$data['sorts'][] = array(
+			//}
+			/*$data['sorts'][] = array(
 				'text'  => $this->language->get('text_model_asc'),
 				'value' => 'p.model-ASC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=ASC' . $url)
@@ -296,7 +342,7 @@ class ControllerProductCategory extends Controller {
 				'text'  => $this->language->get('text_model_desc'),
 				'value' => 'p.model-DESC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=DESC' . $url)
-			);
+			);*/
 
 			$url = '';
 
@@ -306,6 +352,14 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['price1'])) {
+				$url .= '&price1=' . $this->request->get['price1'];
+			}
+
+			if (isset($this->request->get['price2'])) {
+				$url .= '&price2=' . $this->request->get['price2'];
 			}
 
 			if (isset($this->request->get['order'])) {
@@ -366,7 +420,6 @@ class ControllerProductCategory extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-
 			switch($category_id){
 				case 59:{
 					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {

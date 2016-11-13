@@ -28,7 +28,7 @@
         </div>
     </div>
     <?php } ?>
-    <?php if ($products) { ?>
+
     <!--<p><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></p>
     <div class="row">
         <div class="col-md-4">
@@ -42,17 +42,7 @@
         <div class="col-md-2 text-right">
             <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
         </div>
-        <div class="col-md-3 text-right">
-            <select id="input-sort" class="form-control" onchange="location = this.value;">
-                <?php foreach ($sorts as $sorts) { ?>
-                <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-                <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-                <?php } else { ?>
-                <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-                <?php } ?>
-                <?php } ?>
-            </select>
-        </div>
+
         <div class="col-md-1 text-right">
             <label class="control-label" for="input-limit"><?php echo $text_limit; ?></label>
         </div>
@@ -72,9 +62,23 @@
     <br/>-->
     <div class="cont_box bw clf">
         <div class="back_box_wr mw clf">
+            <input type="hidden" value="<?=$base_url; ?>">
             <div class="box_filtr fl clf">
                 <p class="fl">Сортировать по:</p>
-                <a class="fl" href="#">популярности</a>
+
+                <?php $i=0; foreach ($sorts as $sorts) { ?>
+                <?php if ($sorts['value'] == $sort . '-' . $order && $order == 'DESC') { ?>
+                <!--<option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>-->
+                    <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+                <?php } elseif($sorts['value'] == $sort . '-' . $order && $order == 'ASC') { ?>
+                <!--<option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>-->
+                    <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
+                <?php } ?>
+                <?php if(isset($order) && empty($order) && $i == 1){ ?>
+                    <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+                <?php } $i++; ?>
+                <?php } ?>
+
             </div>
 
             <div class="range_sl_box fr clf">
@@ -87,18 +91,8 @@
             </div>
         </div>
     </div>
+    <?php if ($products) { ?>
     <div class="cont_box bw clf">
-        <!--<div class="row">
-            <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
-            <div class="col-sm-3">
-                <ul>
-                    <?php foreach ($categories as $category) { ?>
-                    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                    <?php } ?>
-                </ul>
-            </div>
-            <?php } ?>
-        </div>-->
         <?php if (count($products) <= 5) { ?>
         <div class="item_list_box fix_m mw clf">
             <?php foreach ($products as $product) { ?>
@@ -187,3 +181,36 @@
 </div>
 </div>
 <?php echo $footer; ?>
+
+<script>
+    /*Range Slider*/
+    $(document).ready(function() {
+        var snapSlider = document.getElementById('slider-range');
+
+        noUiSlider.create(snapSlider, {
+            start: [ <?=$price1;?>, <?=$price2;?> ],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 10000
+            },
+            format: wNumb({
+                decimals: 0
+            })
+        });
+
+        var snapValues = [
+            document.getElementById('min_price'),
+            document.getElementById('max_price')
+        ];
+
+        snapSlider.noUiSlider.on('update', function( values, handle ) {
+            snapValues[handle].innerHTML = values[handle];
+        });
+
+        snapSlider.noUiSlider.on('end', function(values, handle){
+            var link = '';
+            window.location.href = window.location.href + '&price1='+values[0] + '&price2='+values[1];
+        });
+    });
+</script>

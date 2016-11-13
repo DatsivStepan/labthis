@@ -703,3 +703,13 @@ h2.price {
        width: 100%;
     }
 }
+.box_filtr a.asc:after {
+	content: '';
+	width: 19px;
+	height: 6px;
+	margin: 7px 0 0 9px;
+	float: right;
+	background-image: url(../img/ico/fitr_ico.jpg);
+	background-repeat: no-repeat;
+	background-position: 0 -6px;
+}

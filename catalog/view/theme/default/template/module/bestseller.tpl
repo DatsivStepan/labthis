@@ -35,7 +35,7 @@
                                                 </span>
                                             <?php } ?>
 
-                                            <div class="namber_box section number-plus-minus fr clf">
+                                            <div class="namber_box section number-plus-minus fr clf" id="product_<?=$product['product_id']; ?>">
                                                 <input type="number" value="1"  min="1" step="1" />
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                             <img src="/image/catalog/ico/check.jpg" alt="img">
                                         </div>
 
-                                        <a class="bay_btn hb mw clf" onclick="cart.add('<?php echo $product['product_id']; ?>');">В корзину</a>
+                                        <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id']; ?>)">В корзину</a>
                                     </div>
                                 <?php if(($key == 3) || ($key == 4) || ($key == $last_element)){ ?>
                                     </div>
