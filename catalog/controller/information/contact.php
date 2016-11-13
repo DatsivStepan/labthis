@@ -5,9 +5,10 @@ class ControllerInformationContact extends Controller {
 	public function index() {
 		$this->load->language('information/contact');
 		$this->document->setTitle($this->language->get('heading_title'));
-                
+
                 $this->document->addScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCO0aDaig1Fs4Gj3kDCPp1IIWvWz-7QXWc');
                 $this->document->addScript('catalog/view/javascript/initmap.js');
+                $this->document->addScript('catalog/view/javascript/contact.js');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			unset($this->session->data['captcha']);
@@ -19,8 +20,9 @@ class ControllerInformationContact extends Controller {
 			$mail->setSubject(sprintf($this->language->get('email_subject'), $this->request->post['name']));
 			$mail->setText(strip_tags($this->request->post['enquiry']));
 			$mail->send();
-
-			$this->response->redirect($this->url->link('information/contact/success'));
+			echo '<h3>Ваше сообщение успешно отправлено владельцу магазина!</h3>';
+			exit;
+			// $this->response->redirect($this->url->link('information/contact/success'));
 		}
 
 		$data['breadcrumbs'] = array();
@@ -45,12 +47,12 @@ class ControllerInformationContact extends Controller {
 		$data['text_fax'] = $this->language->get('text_fax');
 		$data['text_open'] = $this->language->get('text_open');
 		$data['text_comment'] = $this->language->get('text_comment');
-                
+
                 $data['telephone'] = $this->config->get('config_telephone');
 		$data['address'] = $this->config->get('config_address');
 		$data['email_shop'] = $this->config->get('config_email');
 		$data['open'] = $this->config->get('config_open');
-                
+
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_enquiry'] = $this->language->get('entry_enquiry');
