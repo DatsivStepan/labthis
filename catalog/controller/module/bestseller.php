@@ -2,6 +2,7 @@
 class ControllerModuleBestSeller extends Controller {
 	public function index($setting) {
 		$this->load->language('module/bestseller');
+		$this->document->addScript('catalog/view/javascript/category.js');
 
 		$data['heading_title'] = $this->language->get('heading_title');
 

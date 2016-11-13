@@ -28,29 +28,4 @@ var cart_category = {
             }
         });
     }
-}
-/*Range Slider*/
-$(document).ready(function() {
-    var snapSlider = document.getElementById('slider-range');
-
-    noUiSlider.create(snapSlider, {
-        start: [ 0, 7500 ],
-        connect: true,
-        range: {
-            'min': 0,
-            'max': 10000
-        },
-        format: wNumb({
-            decimals: 0
-        })
-    });
-
-    var snapValues = [
-        document.getElementById('min_price'),
-        document.getElementById('max_price')
-    ];
-
-    snapSlider.noUiSlider.on('update', function( values, handle ) {
-        snapValues[handle].innerHTML = values[handle];
-    });
-});
+};

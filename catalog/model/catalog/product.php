@@ -139,6 +139,13 @@ class ModelCatalogProduct extends Model {
 			$sql .= ")";
 		}
 
+		if (!empty($data['price1'])) {
+			$sql .= " AND p.price >= '" . (int)$data['price1'] . "'";
+		}
+		if (!empty($data['price2'])) {
+			$sql .= " AND p.price <= '" . (int)$data['price2'] . "'";
+		}
+
 		if (!empty($data['filter_manufacturer_id'])) {
 			$sql .= " AND p.manufacturer_id = '" . (int)$data['filter_manufacturer_id'] . "'";
 		}
