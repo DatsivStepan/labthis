@@ -63,10 +63,14 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 .nav-tabs {
 	margin-bottom: 15px;
 }
-div.required .control-label:before {
+div.required .control-label:after {
 	content: '* ';
 	color: #F00;
 	font-weight: bold;
+}
+div.required .control-label:before {
+	content: '';
+	display: none;
 }
 /* Gradent to all drop down menus */
 .dropdown-menu li > a:hover {
