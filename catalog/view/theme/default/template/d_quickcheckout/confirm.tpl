@@ -115,7 +115,9 @@
 			          
 			        </div>
 			        <div class="col-xs-8"> 
+                  <span class="btn btn-link btn-file">
 			          <input type="file" name="address4" id="shipping_address_custom_field.address.4" value="" class="" autocomplite="on" placeholder="">
+			          </span> <span style="    border-bottom: 3px dotted #0072b6;    color: #0072b6;">ЗАГРУЗИТЬ РЕКВИЗИТЫ</span>
 			        </div>
 			       </div>	     
           </div>
