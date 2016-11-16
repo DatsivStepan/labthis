@@ -72,6 +72,12 @@ div.required .control-label:before {
 	content: '';
 	display: none;
 }
+.fa-times{
+    font-size: 34px;
+}
+.delete {
+    color: #e4e4e4;
+}
 /* Gradent to all drop down menus */
 .dropdown-menu li > a:hover {
 	text-decoration: none;
