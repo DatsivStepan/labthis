@@ -43,10 +43,10 @@ class ControllerCheckoutCheckout extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		$data['breadcrumbs'][] = array(
+		/*$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_cart'),
 			'href' => $this->url->link('checkout/cart')
-		);
+		);*/
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),

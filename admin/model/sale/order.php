@@ -113,6 +113,19 @@ class ModelSaleOrder extends Model {
 				'payment_method'          => $order_query->row['payment_method'],
 				'payment_code'            => $order_query->row['payment_code'],
 				'shipping_firstname'      => $order_query->row['shipping_firstname'],
+                'shipping_contactname'    => $order_query->row['shipping_contactname'],
+                'shipping_zakx2'          => $order_query->row['shipping_zakx2'],
+                'shipping_email'          => $order_query->row['shipping_email'],
+                'shipping_phone'          => $order_query->row['shipping_phone'],
+                'shipping_phone2'         => $order_query->row['shipping_phone2'],
+                'shipping_com'            => $order_query->row['shipping_com'],
+                'shipping_rekviz'         => $order_query->row['shipping_rekviz'],
+                'shipping_rekvizup'       => $order_query->row['shipping_rekvizup'],
+                'shipping_sposdost'       => $order_query->row['shipping_sposdost'],
+                'shipping_gorod'          => $order_query->row['shipping_gorod'],
+                'shipping_ylica'          => $order_query->row['shipping_ylica'],
+                'shipping_dom'            => $order_query->row['shipping_dom'],
+                'shipping_kvar'           => $order_query->row['shipping_kvar'],
 				'shipping_lastname'       => $order_query->row['shipping_lastname'],
 				'shipping_company'        => $order_query->row['shipping_company'],
 				'shipping_address_1'      => $order_query->row['shipping_address_1'],
@@ -157,7 +170,7 @@ class ModelSaleOrder extends Model {
 	}
 
 	public function getOrders($data = array()) {
-		$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS status, o.shipping_code, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";
+		$sql = "SELECT o.order_id, o.shipping_zakx2, CONCAT(o.firstname, ' ', o.lastname) AS customer, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS status, o.shipping_code, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";
 
 		if (isset($data['filter_order_status'])) {
 			$implode = array();

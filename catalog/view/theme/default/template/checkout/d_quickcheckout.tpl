@@ -1,10 +1,17 @@
 <?php echo $header; ?>
+    <div class="way_wr_box mw clf">
+        <div class="way_box bw clf">
+            <ul class="clf">
+                <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+                    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+                <?php } ?>
+            </ul>
+
+            <p class="way_art fl clf"><?php echo $heading_title; ?></p>
+        </div>
+    </div>
 <div class="container" id="container">
-  <ul class="breadcrumb qc-breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
+
   <?php if ($error_warning) { ?>
   <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>

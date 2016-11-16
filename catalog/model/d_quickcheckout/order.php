@@ -80,7 +80,7 @@ class ModelDQuickcheckoutOrder extends Model {
 
 
 	public function addOrder($data) {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "order` SET 
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "order` SET
 			store_id = '" . (int)$data['store_id'] . "', 
 			store_name = '" . $this->db->escape($data['store_name']) . "', 
 			store_url = '" . $this->db->escape($data['store_url']) . "', 
@@ -107,28 +107,35 @@ class ModelDQuickcheckoutOrder extends Model {
 		$this->event->trigger('pre.order.add', $data);
 
 		$query = "UPDATE `" . DB_PREFIX . "order` SET 
-			invoice_prefix = '" . $this->db->escape($data['invoice_prefix']) . "', 
-			store_id = '" . (int)$data['store_id'] . "', 
-			store_name = '" . $this->db->escape($data['store_name']) . "', 
-			store_url = '" . $this->db->escape($data['store_url']) . "', 
-			customer_id = '" . (int)$data['customer_id'] . "', 
-			customer_group_id = '" . (int)$data['customer_group_id'] . "', 
-			firstname = '" . $this->db->escape($data['firstname']) . "', 
-			lastname = '" . $this->db->escape($data['lastname']) . "', 
-			email = '" . $this->db->escape($data['email']) . "', 
-			telephone = '" . $this->db->escape($data['telephone']) . "', 
-			fax = '" . $this->db->escape($data['fax']) . "', ";
+			invoice_prefix = '" . $this->db->escape($data['invoice_prefix']) . "',";
+			$query .="store_id = '" . (int)$data['store_id'] . "', ";
+            $query .="order_status_id = '1', ";
+			$query .="store_name = '" . $this->db->escape($data['store_name']) . "', ";
+			$query .="store_url = '" . $this->db->escape($data['store_url']) . "', ";
+			$query .="customer_id = '" . (int)$data['customer_id'] . "', ";
+			$query .="customer_group_id = '" . (int)$data['customer_group_id'] . "',";
+		if(isset($data['shipping_contactname'])) {
+			$query = $query. " firstname = '" . $this->db->escape($data['shipping_contactname']) . "',"; }else{
+			$query .="firstname = '" . $this->db->escape($data['firstname']) . "',";}
+			$query .="lastname = '" . $this->db->escape($data['lastname']) . "', ";
+		if(isset($data['shipping_email'])) {
+			$query = $query. " email = '" . $this->db->escape($data['shipping_email']) . "',"; }else{
+			$query .="email = '" . $this->db->escape($data['email']) . "',";}
+        if(isset($data['shipping_phone'])) {
+			$query = $query. " telephone = '" . $this->db->escape($data['shipping_phone']) . "',"; }else{
+			$query .="telephone = '" . $this->db->escape($data['telephone']) . "',";}
+			$query .="fax = '" . $this->db->escape($data['fax']) . "', ";
 			if(VERSION >= '2.1.0.1'){
 				$query .="custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : '') . "', ";
 			}else{
 				$query .="custom_field = '" . $this->db->escape(isset($data['custom_field']) ? serialize($data['custom_field']) : '') . "', ";
 			}
-			$query .= "payment_firstname = '" . $this->db->escape($data['payment_firstname']) . "', 
-			payment_lastname = '" . $this->db->escape($data['payment_lastname']) . "', 
+			$query .= "payment_firstname = '" . $this->db->escape($data['payment_firstname']) . "',
+			payment_lastname = '" . $this->db->escape($data['payment_lastname']) . "',
 			payment_company = '" . $this->db->escape($data['payment_company']) . "', 
-			payment_address_1 = '" . $this->db->escape($data['payment_address_1']) . "', 
+			payment_address_1 = '" . $this->db->escape($data['payment_address_1']) . "',
 			payment_address_2 = '" . $this->db->escape($data['payment_address_2']) . "', 
-			payment_city = '" . $this->db->escape($data['payment_city']) . "', 
+			payment_city = '" . $this->db->escape($data['payment_city']) . "',
 			payment_postcode = '" . $this->db->escape($data['payment_postcode']) . "', 
 			payment_country = '" . $this->db->escape($data['payment_country']) . "', 
 			payment_country_id = '" . (int)$data['payment_country_id'] . "', 
@@ -167,6 +174,20 @@ class ModelDQuickcheckoutOrder extends Model {
 			commission = '" . (float)$data['commission'] . "',"; 
 
 		if(isset($data['marketing_id'])) { $query = $query. " marketing_id = '" . (int)$data['marketing_id'] . "',"; }
+        
+        if(isset($data['shipping_contactname'])) { $query = $query. " shipping_contactname = '" . $this->db->escape($data['shipping_contactname']) . "',"; }
+         if(isset($data['shipping_zakx2'])) { $query = $query. " shipping_zakx2 = '" . $this->db->escape($data['shipping_zakx2']) . "',"; }
+        if(isset($data['shipping_email'])) { $query = $query. " shipping_email = '" . $this->db->escape($data['shipping_email']) . "',"; }
+        if(isset($data['shipping_phone'])) { $query = $query. " shipping_phone = '" . $this->db->escape($data['shipping_phone']) . "',"; }
+        if(isset($data['shipping_phone2'])) { $query = $query. " shipping_phone2 = '" . $this->db->escape($data['shipping_phone2']) . "',"; }
+        if(isset($data['shipping_com'])) { $query = $query. " shipping_com = '" . $this->db->escape($data['shipping_com']) . "',"; }
+        if(isset($data['shipping_rekviz'])) { $query = $query. " shipping_rekviz = '" . $this->db->escape($data['shipping_rekviz']) . "',"; }
+        if(isset($data['shipping_rekvizup'])) { $query = $query. " shipping_rekvizup = '" . $this->db->escape($data['shipping_rekvizup']) . "',"; }
+        if(isset($data['shipping_sposdost'])) { $query = $query. " shipping_sposdost = '" . $this->db->escape($data['shipping_sposdost']) . "',"; }
+        if(isset($data['shipping_gorod'])) { $query = $query. " shipping_gorod = '" . $this->db->escape($data['shipping_gorod']) . "',"; }
+        if(isset($data['shipping_ylica'])) { $query = $query. " shipping_ylica = '" . $this->db->escape($data['shipping_ylica']) . "',"; }
+        if(isset($data['shipping_dom'])) { $query = $query. " shipping_dom = '" . $this->db->escape($data['shipping_dom']) . "',"; }
+        if(isset($data['shipping_kvar'])) { $query = $query. " shipping_kvar = '" . $this->db->escape($data['shipping_kvar']) . "',"; }
 
 		if(isset($data['tracking'])) { $query = $query. " tracking = '" . $this->db->escape($data['tracking']) . "',"; }
 

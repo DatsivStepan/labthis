@@ -19,7 +19,7 @@
       <div class="panel-body">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab-order" data-toggle="tab"><?php echo $tab_order; ?></a></li>
-          <li><a href="#tab-payment" data-toggle="tab"><?php echo $tab_payment; ?></a></li>
+          <li><a href="#tab-payment" data-toggle="tab">Подробная информация</a></li>
           <?php if ($shipping_method) { ?>
           <li><a href="#tab-shipping" data-toggle="tab"><?php echo $tab_shipping; ?></a></li>
           <?php } ?>
@@ -171,7 +171,74 @@
           <div class="tab-pane" id="tab-payment">
             <table class="table table-bordered">
               <tr>
-                <td><?php echo $text_firstname; ?></td>
+                <td>Срочный заказ на испытания</td>
+                <td>
+               
+                <?php
+                if($shipping_zakx2=='false'){echo ' <span style="color: blue;">нет</span>'; }
+              if($shipping_zakx2=='true'){echo ' <span style="color: red">да</span>'; }
+               
+               
+               ?>
+                
+                </td>
+              </tr> 
+              <tr>
+                <td>Контактное лицо</td>
+                <td><?php echo $shipping_contactname; ?></td>
+              </tr> 
+                <tr>
+                <td>E-mail</td>
+                <td><?php echo $shipping_email; ?></td>
+              </tr> 
+                <tr>
+                <td>Телефон</td>
+                <td><?php echo $shipping_phone; ?></td>
+              </tr> 
+                <tr>
+                <td>Доп. телефон</td>
+                <td><?php echo $shipping_phone2; ?></td>
+              </tr> 
+                <tr>
+                <td>Комментарий к заказу</td>
+                <td><?php echo $shipping_com; ?></td>
+              </tr> 
+                <tr>
+                <td>Реквизиты(для юридического лица)</td>
+                <td><?php echo $shipping_rekviz; ?></td>
+              </tr> 
+               <?php if ($shipping_rekvizup) { ?>
+                <tr>
+                <td>Реквизиты(для юридического лица) файл</td>
+                <td>
+                <a href="<?php echo $shipping_rekvizup; ?>">скачать</a>
+                </td>
+              </tr> 
+                <?php } ?>
+                <tr>
+                <td>Способ доставки:</td>
+                <td><?php echo $shipping_sposdost; ?></td>
+              </tr> 
+                <tr>
+                <td>Город</td>
+                <td><?php echo $shipping_gorod; ?></td>
+              </tr> 
+                <tr>
+                <td>Улица</td>
+                 <td><?php echo $shipping_ylica; ?></td>
+              </tr> 
+                <tr>
+                <td>Дом</td>
+               <td><?php echo $shipping_dom; ?></td>
+              </tr> 
+                <tr>
+                <td>Квартира</td>
+                <td><?php echo $shipping_kvar; ?></td>
+              </tr>   
+        
+               <!--
+               <tr>
+                <td><?php echo $text_lastname; ?> <?php echo $text_firstname; ?></td>
                 <td><?php echo $payment_firstname; ?></td>
               </tr>
               <tr>
@@ -227,7 +294,7 @@
               <tr>
                 <td><?php echo $text_payment_method; ?></td>
                 <td><?php echo $payment_method; ?></td>
-              </tr>
+              </tr> -->
             </table>
           </div>
           <?php if ($shipping_method) { ?>
