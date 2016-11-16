@@ -128,8 +128,13 @@
               </thead>
               <tbody>
                 <?php if ($orders) { ?>
-                <?php foreach ($orders as $order) { ?>
-                <tr>
+                <?php foreach ($orders as $order) { 
+                $style="";
+                if ($order['shipping_zakx2']=='true') {
+                $style="background-color: rgba(255, 0, 0, 0.28);";
+                }
+                ?>
+                <tr style="<?php echo $style;  ?>">
                   <td class="text-center"><?php if (in_array($order['order_id'], $selected)) { ?>
                     <input type="checkbox" name="selected[]" value="<?php echo $order['order_id']; ?>" checked="checked" />
                     <?php } else { ?>

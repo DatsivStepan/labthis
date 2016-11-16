@@ -383,6 +383,7 @@ class ControllerSaleOrder extends Controller {
 		foreach ($results as $result) {
 			$data['orders'][] = array(
 				'order_id'      => $result['order_id'],
+                'shipping_zakx2'=> $result['shipping_zakx2'],
 				'customer'      => $result['customer'],
 				'status'        => $result['status'],
 				'total'         => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
@@ -1342,6 +1343,19 @@ class ControllerSaleOrder extends Controller {
 			
 			// Shipping
 			$data['shipping_firstname'] = $order_info['shipping_firstname'];
+            $data['shipping_contactname'] = $order_info['shipping_contactname'];
+            $data['shipping_zakx2'] = $order_info['shipping_zakx2'];
+            $data['shipping_email'] = $order_info['shipping_email'];
+            $data['shipping_phone'] = $order_info['shipping_phone'];
+            $data['shipping_phone2'] = $order_info['shipping_phone2'];
+            $data['shipping_com'] = $order_info['shipping_com'];
+            $data['shipping_rekviz'] = $order_info['shipping_rekviz'];
+            $data['shipping_rekvizup'] = $order_info['shipping_rekvizup'];
+            $data['shipping_sposdost'] = $order_info['shipping_sposdost'];
+            $data['shipping_gorod'] = $order_info['shipping_gorod'];
+            $data['shipping_ylica'] = $order_info['shipping_ylica'];
+            $data['shipping_dom'] = $order_info['shipping_dom'];
+            $data['shipping_kvar'] = $order_info['shipping_kvar'];
 			$data['shipping_lastname'] = $order_info['shipping_lastname'];
 			$data['shipping_company'] = $order_info['shipping_company'];
 			$data['shipping_address_1'] = $order_info['shipping_address_1'];

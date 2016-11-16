@@ -27,7 +27,7 @@ body > #d_quickcheckout{
 		<?php echo $login; ?>
 		<?php echo $payment_address; ?>
 		<?php echo $shipping_address; ?>
-		<?php echo $shipping_method; ?>
+		<?php //echo $shipping_method; ?>
 		<?php echo $payment_method; ?>
 		<?php echo $cart; ?>
 		<?php echo $payment; ?>
