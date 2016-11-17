@@ -247,8 +247,9 @@ class ControllerProductSearch extends Controller {
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'p_category_id'       => $this->model_catalog_product->getCategories($result['product_id']),
 					'name'        => $result['name'],
-					'model'        => $result['model'],
+					'model'       => $result['model'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
@@ -430,7 +431,7 @@ class ControllerProductSearch extends Controller {
 
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
 		}
-
+                
 		$data['search'] = $search;
 		$data['description'] = $description;
 		$data['category_id'] = $category_id;

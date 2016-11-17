@@ -193,8 +193,7 @@ class ControllerProductCategory extends Controller {
 			$data['categories'] = array();
 
 			$results = $this->model_catalog_category->getCategories($category_id);
-
-			foreach ($results as $result) {
+                        foreach ($results as $result) {
 				$filter_data = array(
 					'filter_category_id'  => $result['category_id'],
 					'filter_sub_category' => true
@@ -420,7 +419,8 @@ class ControllerProductCategory extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-			switch($category_id){
+                        
+                        switch($category_id){
 				case 59:{
 					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
 						$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category.tpl', $data));
@@ -428,6 +428,14 @@ class ControllerProductCategory extends Controller {
 						$this->response->setOutput($this->load->view('default/template/product/category.tpl', $data));
 					}
 					break;
+				}
+				case 80:{
+                                    if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category3.tpl')) {
+                                            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category3.tpl', $data));
+                                    } else {
+                                            $this->response->setOutput($this->load->view('default/template/product/category3.tpl', $data));
+                                    }
+                                    break;
 				}
 				default:{
 					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category2.tpl')) {
