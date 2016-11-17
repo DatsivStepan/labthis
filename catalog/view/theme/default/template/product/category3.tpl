@@ -3,15 +3,18 @@
     <div class="way_box bw clf">
         <ul class="clf">
             <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-            <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+                <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
             <?php } ?>
         </ul>
-
         <p class="way_art fl clf"><?php echo $heading_title; ?></p>
     </div>
 </div>
 <div class="cont_wr mw clf">
 
+    <div class="cont_box bw clf">
+        <?= $description; ?>
+    </div>
+<!--
     <?php if ($categories) { ?>
     <div class="cont_box bw clf">
         <div class="cont_text fix_p font_stl fl mw clf">
@@ -27,7 +30,7 @@
             </ul>
         </div>
     </div>
-    <?php } ?>
+    <?php } ?>-->
 
     <!--<p><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></p>
     <div class="row">
@@ -60,7 +63,7 @@
         </div>
     </div>
     <br/>-->
-    <?php if (!$categories && !$products) { ?>
+    <!--<?php if (!$categories && !$products) { ?>
     <div class="cont_box bw clf">
         <div class="back_box_wr mw clf">
             <input type="hidden" value="<?=$base_url; ?>">
@@ -70,10 +73,10 @@
                 <?php $i=0; foreach ($sorts as $sorts) { ?>
                 <?php if ($sorts['value'] == $sort . '-' . $order && $order == 'DESC') { ?>
                 <!--<option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>-->
-                    <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+ <!--                   <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
                 <?php } elseif($sorts['value'] == $sort . '-' . $order && $order == 'ASC') { ?>
                 <!--<option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>-->
-                    <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
+<!--                    <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
                 <?php } ?>
                 <?php if(isset($order) && empty($order) && $i == 1){ ?>
                     <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
@@ -92,8 +95,8 @@
             </div>
         </div>
     </div>
-    <?php } ?>
-    <?php if ($products) { ?>
+    <?php } ?> -->
+<!--    <?php if ($products) { ?>
 
     <div class="cont_box bw clf">
         <div class="back_box_wr mw clf">
@@ -104,10 +107,10 @@
                 <?php $i=0; foreach ($sorts as $sorts) { ?>
                 <?php if ($sorts['value'] == $sort . '-' . $order && $order == 'DESC') { ?>
                 <!--<option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>-->
-                <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+ <!--               <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
                 <?php } elseif($sorts['value'] == $sort . '-' . $order && $order == 'ASC') { ?>
                 <!--<option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>-->
-                <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
+<!--                <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
                 <?php } ?>
                 <?php if(isset($order) && empty($order) && $i == 1){ ?>
                 <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
@@ -132,7 +135,7 @@
         <div class="item_list_box fix_m mw clf">
             <?php foreach ($products as $product) { ?>
             <!--Product Item-->
-            <div class="product_item bshd clf">
+<!--            <div class="product_item bshd clf">
                 <div class="img_box mw clf">
                     <a href="<?=$product['href'];?>">
                         <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
@@ -167,7 +170,7 @@
         <div class="item_list_box fix_m mw clf">
             <?php foreach ($products as $product) { ?>
             <!--Product Item-->
-            <div class="product_item bshd clf">
+<!--            <div class="product_item bshd clf">
                 <div class="img_box mw clf">
                     <a href="<?=$product['href'];?>">
                         <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
@@ -213,7 +216,7 @@
                                    class="btn btn-primary"><?php echo $button_continue; ?></a></div>
     </div>
     <?php } ?>-->
-</div>
+<!--</div>-->
 </div>
 <?php echo $footer; ?>
 

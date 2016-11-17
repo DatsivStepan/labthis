@@ -62,7 +62,25 @@
             <?php foreach ($products as $product) { ?>
             <div class="itl_box bshd mw clf">
                 <ul class="clf" id="product_<?=$product['product_id'];?>">
-                    <li class="itl_name clf"><?php echo $product['name']; ?></li>
+                    <li class="itl_name clf"  data-toggle="modal" data-target="#productDescription<?=$product['product_id'];?>"><?php echo $product['name']; ?></li>
+                    
+                    <div id="productDescription<?=$product['product_id'];?>" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title" style="text-align: center">
+                                        <?php echo $product['name']; ?>
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <?= $product['description']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
                     <li class="itl_size clf">
                         <span class="itl_text cb clf">Количество:</span>
                         <div class="namber_box section number-plus-minus fr clf">
