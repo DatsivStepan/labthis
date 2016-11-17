@@ -8,8 +8,8 @@
 <script type="text/html" id="confirm_template">
 <div id="confirm_wrap">
 	<div class="">
-		<div class="panel-body">
-					<form  class="form-horizontal" novalidate="novalidate">
+		<div class="panel-body form_box">
+					<form name="form" class="form-horizontal" novalidate="novalidate">
 			<div class="container">
 <div class="row"><h4 class="text-center"><b>ОФОРМЛЕНИЕ ЗАКАЗА</b></h4></div>
 <div class="row">
@@ -23,7 +23,7 @@
 			          </label>
 			        </div>
 			        <div class="col-xs-8"> 
-			          <input type="text" name="firstname" id="shipping_address_firstname" value="" class="form-control  required firstname" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!">
+			          <input type="text" name="firstname" id="shipping_address_firstname" value="" class="form-control  required firstname" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!"><span style="color:red" id="firstnamef"></span>
 			        </div>
 	</div>
     <div id="shipping_address_email_input"     class="text-input form-group  sort-item   required" data-sort="2">
@@ -33,7 +33,7 @@
 			          </label>
 			        </div>
 			        <div class="col-xs-8"> 
-			          <input type="text" name="emails" id="shipping_address_email" value="" class="form-control  required email" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!">
+			          <input type="text" name="emails" id="shipping_address_email" value="" class="form-control  required email" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!"><span style="color:red" id="emailsf"></span>
 			        </div>
 	</div>
     <div id="shipping_address_phone_input"     class="text-input form-group  sort-item   required" data-sort="3">
@@ -43,7 +43,7 @@
 			          </label>
 			        </div>
 			        <div class="col-xs-8"> 
-			          <input type="text" name="phone" id="shipping_address_phone" value="" class="form-control  required phone" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!">
+			          <input type="text" name="phone" id="shipping_address_phone" value="" class="form-control  required phone" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!"><span style="color:red" id="phonef">
 			        </div>
 	</div>
     <div id="shipping_address_phone2_input"    class="text-input form-group  sort-item  " data-sort="4">
@@ -116,9 +116,10 @@
 			        </div>
 			        <div class="col-xs-8"> 
                   <span class="btn btn-link btn-file">
-			          <input type="file" name="address4" id="shipping_address_custom_field.address.4" value="" class="" autocomplite="on" placeholder="">
-			          </span> <span style="    border-bottom: 3px dotted #0072b6;    color: #0072b6;">ЗАГРУЗИТЬ РЕКВИЗИТЫ</span>
-			        </div>
+			          <input onchange="fileup()" type="file" name="address4" id="shipping_address_custom_field.address.4" value="" class="" autocomplite="on" placeholder="">
+			           <span style="margin-left: 15px;    border-bottom: 3px dotted #0072b6;    color: #0072b6;">ЗАГРУЗИТЬ РЕКВИЗИТЫ</span><br><span style="    padding-left: 10px;  color: #0173B6;" id="filef">
+			        </span>
+			        </span></div>
 			       </div>	     
           </div>
           
@@ -133,7 +134,7 @@
 			          </label>
 			        </div>
 			        <div class="col-xs-8"> 
-			          <input type="text" name="gorod" id="shipping_address_firstname" value="" class="form-control  required firstname" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!">
+			          <input type="text" name="gorod" id="shipping_address_firstname" value="" class="form-control  required firstname" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!"><span style="color:red" id="gorodf">
 			        </div>
 	</div>
     <div id="shipping_address_email_input"     class="text-input form-group  sort-item   required" data-sort="2">
@@ -143,7 +144,7 @@
 			          </label>
 			        </div>
 			        <div class="col-xs-8"> 
-			          <input type="text" name="ylica" id="shipping_address_email" value="" class="form-control  required email" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!">
+			          <input type="text" name="ylica" id="shipping_address_email" value="" class="form-control  required email" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!"><span style="color:red" id="ylicaf">
 			        </div>
 	</div>
     <div id="shipping_address_phone_input"     class="text-input form-group  sort-item   required" data-sort="3">
@@ -153,7 +154,7 @@
 			          </label>
 			        </div>
 			        <div class="col-xs-8"> 
-			          <input type="text" name="dom" id="shipping_address_phone" value="" class="form-control  required phone" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!">
+			          <input type="text" name="dom" id="shipping_address_phone" value="" class="form-control  required phone" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!"><span style="color:red" id="domf">
 			        </div>
 	</div>
     <div id="shipping_address_phone2_input"    class="text-input form-group  sort-item   required" data-sort="4">
@@ -174,8 +175,7 @@
 </div>
 </div>
 </form>
-			<form id="confirm_form" class="form-horizontal">
-			</form>
+			
 			<div class="row" style="border-top: 1px solid #dedddd; padding-top: 20px;     margin-top: 20px; margin-bottom: 65px;">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
 			<button onclick="addorder()"  class="btn btn-link btn-lg btn-block" <%= model.show_confirm ? '' : 'disabled="disabled"' %> style="background-color: #0072b6; text-decoration: none; color: #ffffff;">Оформить заказ</span></button>
@@ -185,6 +185,9 @@
 </div>
 </script>
 <script>
+    function fileup(){
+   document.getElementById('filef').innerHTML='файл загружен'; 
+    }
    function divactiveone(){
         document.getElementById('sposdost').value = 'ДОСТАВКА';
       var one = document.getElementById("divone").classList;
@@ -217,6 +220,42 @@
  }
     
      function addorder() {
+   var prov = 0;    
+   var firstname=document.forms["form"]["firstname"].value;
+   var emails=document.forms["form"]["emails"].value;
+   var phone=document.forms["form"]["phone"].value;
+   var gorod=document.forms["form"]["gorod"].value;
+   var ylica=document.forms["form"]["ylica"].value;
+   var dom=document.forms["form"]["dom"].value;
+  
+   if (firstname.length==0){
+      document.getElementById("firstnamef").innerHTML="*данное поле обязательно длязаполнения";
+      prov = 1;
+   }
+   if (emails.length==0){
+      document.getElementById("emailsf").innerHTML="*данное поле обязательно для заполнения";
+      prov = 1;
+   }
+         if (phone.length==0){
+      document.getElementById("phonef").innerHTML="*данное поле обязательно для заполнения";
+      prov = 1;
+   }
+         if (document.getElementById('sposdost').value == 'ДОСТАВКА'){
+         if (gorod.length==0){
+      document.getElementById("gorodf").innerHTML="*данное поле обязательно для заполнения";
+      prov = 1;
+   }
+         if (ylica.length==0){
+      document.getElementById("ylicaf").innerHTML="*данное поле обязательно для заполнения";
+      prov = 1;
+   }
+         if (dom.length==0){
+      document.getElementById("domf").innerHTML="*данное поле обязательно для заполнения";
+      prov = 1;
+   }
+             }
+         
+         if (prov == 0){
        var sposdost = 1;
     var array = {
 				'contactname': $('input[name=firstname]').val(),
@@ -245,6 +284,7 @@
 				window.location = "index.php?route=checkout/success";
 				});
     
+     }
      }
     
 $(function() {

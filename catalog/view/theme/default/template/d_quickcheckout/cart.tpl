@@ -58,12 +58,12 @@
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chekouttovarline" style="padding: 30px;">
         
    
-								<span class="input-group-btn" style="    float: left;    width: 20px;">
-									<button class="btn btn-link decrease hidden-xs" data-product="<%= product.key %>">-</button>
+								<span class="input-group-btn" style="    float: left;    width: 30px;">
+									<button style="border: 1px solid #ccc;" class="btn btn-link decrease hidden-xs" data-product="<%= product.key %>">-</button>
 								</span>            
-								<input style="    float: left;    width: 50px;" type="text" data-mask="9?999999999999999" value="<%= product.quantity %>" class="qc-product-qantity form-control text-center" name="cart.<%= product.key %>"  data-refresh="2"/>
+								<input style="    float: left;    width: 50px; border-radius: 0;" type="text" data-mask="9?999999999999999" value="<%= product.quantity %>" class="qc-product-qantity form-control text-center" name="cart.<%= product.key %>"  data-refresh="2"/>
 								<span class="input-group-btn" style="    float: left;    width: 20px;">
-									<button class="btn btn-link increase hidden-xs" data-product="<%= product.key %>">+</button>
+									<button style="border: 1px solid #ccc;" class="btn btn-link increase hidden-xs" data-product="<%= product.key %>">+</button>
 								
 									
 								</span>

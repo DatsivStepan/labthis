@@ -63,10 +63,31 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 .nav-tabs {
 	margin-bottom: 15px;
 }
-div.required .control-label:before {
+div.required .control-label:after {
 	content: '* ';
 	color: #F00;
 	font-weight: bold;
+}
+div.required .control-label:before {
+	content: '';
+	display: none;
+}
+.fa-times{
+    font-size: 34px;
+}
+.delete {
+    color: #e4e4e4;
+}
+
+
+
+.form_box .btn_submit:active {
+  box-shadow: inset 0 2px 2px rgba(0,0,0,0.2);
+}
+.form_box .btn_submit.disabled,
+.form_box .btn_submit.disabled:hover {
+  background: #afdde6;
+  cursor: default;
 }
 /* Gradent to all drop down menus */
 .dropdown-menu li > a:hover {
