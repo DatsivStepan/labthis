@@ -61,6 +61,7 @@
     </div>
     <br/>-->
     <?php if (!$categories && !$products) { ?>
+
     <div class="cont_box bw clf">
         <div class="back_box_wr mw clf">
             <input type="hidden" value="<?=$base_url; ?>">
@@ -245,7 +246,7 @@
 
         snapSlider.noUiSlider.on('end', function(values, handle){
             var link = '';
-            window.location.href = window.location.href + '&price1='+values[0] + '&price2='+values[1];
+            window.location.href = '<?=html_entity_decode($origin_url);?>' + '&price1='+values[0] + '&price2='+values[1];
         });
     });
 </script>
