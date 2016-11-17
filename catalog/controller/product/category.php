@@ -65,7 +65,8 @@ class ControllerProductCategory extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		if (isset($this->request->get['path'])) {
+                $data['parent_category_id'] = 0;
+                if (isset($this->request->get['path'])) {
 			$url = '';
 
 			if (isset($this->request->get['sort'])) {
@@ -94,10 +95,10 @@ class ControllerProductCategory extends Controller {
 
 			$parts = explode('_', (string)$this->request->get['path']);
 
-			$category_id = (int)array_pop($parts);
-
+                        $category_id = (int)array_pop($parts);
 			foreach ($parts as $path_id) {
 				if (!$path) {
+                                        $data['parent_category_id'] = (int)$path_id;;
 					$path = (int)$path_id;
 				} else {
 					$path .= '_' . (int)$path_id;
@@ -115,7 +116,7 @@ class ControllerProductCategory extends Controller {
 		} else {
 			$category_id = 0;
 		}
-
+                
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
@@ -419,32 +420,41 @@ class ControllerProductCategory extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-                        
-                        switch($category_id){
-				case 59:{
-					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
-						$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category.tpl', $data));
-					} else {
-						$this->response->setOutput($this->load->view('default/template/product/category.tpl', $data));
-					}
-					break;
-				}
-				case 80:{
-                                    if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category3.tpl')) {
-                                            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category3.tpl', $data));
-                                    } else {
-                                            $this->response->setOutput($this->load->view('default/template/product/category3.tpl', $data));
+
+                            
+                            switch($category_id){
+                                    case 59:{
+                                            if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
+                                                    $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category.tpl', $data));
+                                            } else {
+                                                    $this->response->setOutput($this->load->view('default/template/product/category.tpl', $data));
+                                            }
+                                            break;
                                     }
-                                    break;
-				}
-				default:{
-					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category2.tpl')) {
-						$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category2.tpl', $data));
-					} else {
-						$this->response->setOutput($this->load->view('default/template/product/category2.tpl', $data));
-					}
-				}
-			}
+                                    case 80:{
+                                        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category3.tpl')) {
+                                                $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category3.tpl', $data));
+                                        } else {
+                                                $this->response->setOutput($this->load->view('default/template/product/category3.tpl', $data));
+                                        }
+                                        break;
+                                    }
+                                    default:{
+                                        if($data['parent_category_id'] == 75){
+                                            if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category3.tpl')) {
+                                                $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category3.tpl', $data));
+                                            } else {
+                                                    $this->response->setOutput($this->load->view('default/template/product/category3.tpl', $data));
+                                            }
+                                        }else{
+                                            if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category2.tpl')) {
+                                                    $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category2.tpl', $data));
+                                            } else {
+                                                    $this->response->setOutput($this->load->view('default/template/product/category2.tpl', $data));
+                                            }
+                                        }
+                                    }
+                            }
 
 			/*if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/category.tpl')) {
 				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/category.tpl', $data));
