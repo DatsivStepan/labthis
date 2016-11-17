@@ -1652,12 +1652,12 @@ body {
     font: 14px 'nsr';
 }
 .form_box label:after {
-	content: '*';
+	/*content: '*';
 	color: red;
 	width: 2px;
 	height: 2px;
 	margin: 0 0 0 0;
-	top: 0;
+	top: 0;*/
 
 }
 .form_box input[type='text'], .form_box textarea {
