@@ -287,6 +287,7 @@ class ControllerProductCategory extends Controller {
 				$url .= '&price2=' . $this->request->get['price2'];
 			}
 
+
 			$data['sorts'] = array();
 
 			/*$data['sorts'][] = array(
@@ -331,6 +332,8 @@ class ControllerProductCategory extends Controller {
 					'value' => 'rating-ASC',
 					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=DESC' . $url)
 				);
+
+
 			//}
 			/*$data['sorts'][] = array(
 				'text'  => $this->language->get('text_model_asc'),
@@ -396,6 +399,12 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			if($url == ''){
+				$data['origin_url'] = $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=DESC');
+			}else{
+				$data['origin_url'] = $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url);
 			}
 
 			$pagination = new Pagination();
