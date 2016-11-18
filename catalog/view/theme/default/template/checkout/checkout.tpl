@@ -1,5 +1,5 @@
 <?php echo $header; ?>
-<div class="container">
+<!--<div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -85,7 +85,7 @@
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
-</div>
+</div> -->
 <script type="text/javascript"><!--
 $(document).on('change', 'input[name=\'account\']', function() {
 	if ($('#collapse-payment-address').parent().find('.panel-heading .panel-title > *').is('a')) {	
