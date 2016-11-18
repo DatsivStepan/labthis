@@ -634,4 +634,28 @@ class ControllerDQuickcheckoutConfirm extends Controller {
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($this->session->data['totalall']));    
     }
+    
+    public function deleteprod(){ 
+    
+     if($this->request->post['id']){
+          $this->load->model('module/d_quickcheckout');
+        $statistic = array(
+            'update' => array(
+                'confirm' => 1
+            )
+        );
+        $this->model_module_d_quickcheckout->updateStatistic($statistic);
+          $this->load->model('d_quickcheckout/order');
+             $status = $this->model_d_quickcheckout_order->deletetProd($this->session->data['order_id'], $this->request->post['id']);
+        if($status){
+            echo '1';
+        }else{
+             echo $status;
+        }
+        }
+        else{
+             echo '00';
+        }
+    
+    }
 }

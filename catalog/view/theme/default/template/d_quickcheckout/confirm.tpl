@@ -358,6 +358,7 @@ $(function() {
         	function(){$(this).remove();
         });	
     });
+        
 });
 
 
