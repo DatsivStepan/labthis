@@ -25,7 +25,7 @@
                         </div>
         
 			
-					<div class="baskr_item_wr  mw clf">	
+					<div class="baskr_item_wr  mw clf" style="color: black;">	
 					<% _.each(model.products, function(product) { %>
 					
 					<div class="baskr_item_box mw clf" <%= product.stock ? '' : 'class="stock"' %>>
@@ -39,7 +39,9 @@
                                 </div>
 
                                 <div class="itm_name fl clf">
+                                    <a href="<%= product.href %>">
                                     <%= product.name %>
+                                    </a>
                                 </div>
 
                                 <div class="itm_price fl clf" style="color: #2f0000;">
