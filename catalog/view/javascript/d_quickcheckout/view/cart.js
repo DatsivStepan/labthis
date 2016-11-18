@@ -9,7 +9,7 @@ qc.CartView = qc.View.extend({
 	events: {
 		'click button.increase': 'increaseQuantity',
 		'click button.decrease': 'decreaseQuantity',
-		'click button.delete': 'deleteQuantity',
+		'click div.delete': 'deleteQuantity',
 		'change input.qc-product-qantity': 'updateQuantity',
 		'change input#voucher': 'updateVoucher',
 		'change input#coupon': 'updateCoupon',

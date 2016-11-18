@@ -1,3 +1,4 @@
+
 <div id="cart_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>"></div>
 <script type="text/html" id="cart_template">
   <div class="back_box_wr mw clf">
@@ -26,7 +27,7 @@
 
 
 					<div class="baskr_item_wr  mw clf" style="color: black;">
-					<% _.each(model.products, function(product) { %>
+					<%  _.each(model.products, function(product) { %>
 					
 					<div class="baskr_item_box mw clf" <%= product.stock ? '' : 'class="stock"' %>>
 
@@ -54,13 +55,12 @@
                                         <div class="jq-number__field" style="    width: 90px; border: 0px!important;">
 
                                	<span class="input-group-btn" style="    float: left;    width: 25px;">
-									<button style="border: 1px solid #ccc;" class="btn btn-link decrease minus " data-product="<%= product.key %>">-</button>
+									<button style="border: 1px solid #ccc;" id="min<%= product.id %>" class="btn btn-link decrease minus " data-product="<%= product.key %>">-</button>
 								</span>
-								<input style="padding: 0px; float: left; border-top: 1px solid #dedddd !important;
-    border-bottom: 1px solid #dedddd !important;    width: 30px; height: 24px;" min="1" type="text" data-mask="9?999999999999999" value="<%= product.quantity %>" class="qc-product-qantity form-control text-center" name="cart.<%= product.key %>"  data-refresh="2"/>
+								<input id="inp<%= product.id %>" style="padding: 0px; float: left; border-top: 1px solid #dedddd !important;
+    border-bottom: 1px solid #dedddd !important;    width: 30px; height: 24px;" min="0" type="text" data-mask="9?999999999999999" value="<%= product.quantity %>" class="qc-product-qantity form-control text-center" name="cart.<%= product.key %>"  data-refresh="2"/>
 								<span class="input-group-btn" style="    float: left;    width: 25px;">
 									<button style="border: 1px solid #ccc;" class="btn btn-link increase plus" data-product="<%= product.key %>"></button>
-
 
 								</span>
                                         </div></div>
@@ -71,7 +71,7 @@
                                     <%= product.total %>
                                 </div>
 
-                                <div class="close_box fr clf delete">
+                                <div class="close_box fr clf delete decrease " id="<%= product.id %>" onclick="deletet(this);" >
                                 </div>
                             </div>
 
@@ -179,7 +179,17 @@
 
 <script>
 
-   function zakx2Function() {
+  function deletet(e){
+       
+      var nameinp ="inp"+e.id;
+      var namemin ="min"+e.id;
+      document.getElementById(nameinp).value='1';
+      document.getElementById(namemin).click();
+      
+    
+  }
+       
+       function zakx2Function() {
        if(document.getElementById("zakx2").checked == true) {document.getElementById("zakx2").checked = false;}else{
            document.getElementById("zakx2").checked = true;
        }

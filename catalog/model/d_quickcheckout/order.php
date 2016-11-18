@@ -101,6 +101,13 @@ class ModelDQuickcheckoutOrder extends Model {
 			date_modified = NOW()");
 			$order_id = $this->db->getLastId();
 			return $order_id;
+	}	
+    
+    
+    public function deletetProd($order_id, $data) {
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "order_product` WHERE order_id = '" . (int)$order_id . "' AND product_id = '" . (int)$data . "'");
+        unset($this->session->data['recreate_order']);
+	
 	}
 
 	public function updateOrder($order_id,$data) {

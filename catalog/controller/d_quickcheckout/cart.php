@@ -210,6 +210,7 @@ class ControllerDQuickcheckoutCart extends Controller {
                 'image'     => $image,
                 'thumb'     => $image,
                 'name'      => $product['name'],
+                'id'        => $product['product_id'],
                 'model'     => $product['model'],
                 'option'    => $option_data,
                 'recurring' => $recurring,
