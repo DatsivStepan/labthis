@@ -20,8 +20,9 @@
 			          <label class="" for="shipping_address_firstname"> 
 			             Контактное лицо
 			          </label>
-			          <span style="color:red" id="firstnamef"></span>
 			          <input type="text" name="firstname" id="shipping_address_firstname" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!">
+			          <div style="clear:both"></div>
+                                  <div style="color:red" id="firstnamef"></div>
 			          
 			       
 	</div>
@@ -30,8 +31,9 @@
 			          <label class="" for="shipping_address_email"> 
 			            <span class="text" title=""> E-mail</span> 
 			          </label>
-			        <span style="color:red" id="emailsf"></span>
 			          <input type="text" name="emails" id="shipping_address_email" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!">
+			          <div style="clear:both"></div>
+                                 <div style="color:red" id="emailsf"></div>
 			       
 	</div>
     <div id="shipping_address_phone_input"     class="form_cont mw clf" data-sort="3">
@@ -39,8 +41,9 @@
 			          <label class="" for="shipping_address_phone"> 
 			            <span class="text" title="">Телефон</span> 
 			          </label>
-			        <span style="color:red" id="phonef"></span> 
 			          <input type="text" name="phone" id="shipping_address_phone" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!">
+			          <div style="clear:both"></div>
+                                  <div style="color:red" id="phonef"></div> 
 			       
 	</div>
     <div id="shipping_address_phone2_input"    class="form_cont dot_f mw clf" data-sort="4">
