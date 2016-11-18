@@ -4,7 +4,7 @@
 	Dreamvention.com 
 	d_quickcheckout/cart.tpl 
 -->
-<div id="payment_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>"></div>
+
 <script type="text/html" id="payment_template">
 <% if(Number(model.payment_payment_popup)) {%>
 	
