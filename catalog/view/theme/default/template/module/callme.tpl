@@ -43,7 +43,7 @@ $(document).ready(function() {
 <meta charset="UTF-8" />
 <base href="<?php echo $base; ?>" />
  <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-
+<link href="catalog/view/theme/default/fonts/fonts.css" rel="stylesheet">
 <style type="text/css">
  body  {text-align: center; overflow:hidden;}
  #wrap{}
@@ -72,17 +72,17 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 
 	<form class="form-horizontal" role="form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" >
 
-		<div class="form-group <?php echo ($error_name) ? 'has-error' :''; ?>" >
-			<label for="name" class="col-sm-2 control-label"><?php echo $entry_name; ?></label>
+		<div class="form-group <?php echo ($error_name) ? 'has-error' :''; ?>" style="text-align: left;">
+			<label for="name" class="col-sm-2 control-label" style="font: 14px 'nsb';"><?php echo $entry_name; ?></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="name" name="name"  value="<?php echo $name; ?>" placeholder="<?php echo ($error_name) ? $error_name : $entry_name; ?>">
+				<input type="text" class="form-control" id="name" name="name" style="text-align: left;"  value="<?php echo $name; ?>" placeholder="<?php echo ($error_name) ? $error_name : $entry_name; ?>">
 			</div>
 		</div>
 
-		<div class="form-group <?php echo ($error_tel) ? 'has-error ' :''; ?>" >
+		<div class="form-group <?php echo ($error_tel) ? 'has-error ' :''; ?>" style="text-align: left;">
 			<label for="tel" class="col-sm-2 control-label"><?php echo $entry_tel; ?></label>
 			<div class="col-sm-10">
-				<input type="tel" class="form-control" id="tel" name="tel"  value="<?php echo $tel; ?>" placeholder="<?php echo ($error_tel) ? $error_tel : $entry_tel; ?>">
+				<input type="tel" class="form-control" id="tel" name="tel" style="text-align: left;"  value="<?php echo $tel; ?>" placeholder="<?php echo ($error_tel) ? $error_tel : $entry_tel; ?>">
 			</div>
 		</div>
 
@@ -101,10 +101,10 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 		</div>
 		<?php } ?>
 
-		<div class="form-group" >
-			<label for="enquiry" class="col-sm-2 control-label"><?php echo $entry_enquiry; ?></label>
+		<div class="form-group" style="text-align: left;">
+			<label for="enquiry" class="col-sm-2 control-label" ><?php echo $entry_enquiry; ?></label>
 			<div class="col-sm-10">
-				<textarea class="form-control" rows="3" id="enquiry" name="enquiry"  value="<?php echo $enquiry; ?>" > </textarea>
+				<textarea class="form-control" style="text-align: left;" rows="3" id="enquiry" name="enquiry"  value="<?php echo $enquiry; ?>" > </textarea>
 			</div>
 		</div>
 
@@ -139,7 +139,15 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 		<?php } ?>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default"><?php echo $button_send; ?></button>
+				<button type="submit" style="    width: 227px !important;
+    font: 14px 'nsb';
+    color: #fff !important;
+    text-decoration: none;
+    margin: 17px 0 0 0 !important;
+    padding: 12px 0;
+    text-align: center;
+    border:0px;
+    background-color: #0072b6;"><?php echo $button_send; ?></button>
 			</div>
 		</div>
 		<?php } ?>

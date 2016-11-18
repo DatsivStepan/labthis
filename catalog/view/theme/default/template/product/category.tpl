@@ -67,13 +67,13 @@
                     <div id="productDescription<?=$product['product_id'];?>" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title" style="text-align: center">
+                                <!--<div class="modal-header">
+                                    <h4 class="modal-title" style="text-align: center;font: 14px 'nsb'">
                                         <?php echo $product['name']; ?>
                                     </h4>
-                                </div>
+                                </div>-->
                                 <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <?= $product['description']; ?>
                                 </div>
                             </div>
