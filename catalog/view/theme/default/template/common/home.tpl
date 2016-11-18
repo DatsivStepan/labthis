@@ -85,7 +85,7 @@
                         <span class="fib_box_spl"></span>
                         <span class="call_back clf">Позвоните нам</span>
                         <a class="fid_namb" href="tel:<?= $telephone; ?>"><?= $telephone; ?></a>
-                        <a class="call_btn hb callme" href="#">Заказать звонок</a>
+                        <a class="call_btn hb callme">Заказать звонок</a>
                     </div>
                 </div>
             </div>
