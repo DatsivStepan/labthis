@@ -222,9 +222,10 @@ class ControllerInformationContact extends Controller {
 			$this->error['enquiry'] = $this->language->get('error_enquiry');
 		}
 
-		if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
+		/*if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
 			$this->error['captcha'] = $this->language->get('error_captcha');
 		}
+                */
 
 		return !$this->error;
 	}

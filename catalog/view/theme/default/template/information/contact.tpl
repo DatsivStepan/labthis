@@ -51,11 +51,9 @@
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3><?php echo $text_contact; ?></h3>
-              </div>
               <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 style="margin:15px 0px 5px 0px;font-size:24px;text-align:center;"><?php echo $text_contact; ?></h2>
                 <div class="fcont">
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="formContact" class="form-horizontal">
                       <fieldset>
@@ -86,7 +84,10 @@
                             <?php } ?>
                           </div>
                         </div>
-                        <div class="form-group required">
+                        <div class="pull-right">
+                          <input class="bay_btn hb mw clf" style="border:0px;" type="submit" value="Отправить" />
+                        </div>
+                        <!--<div class="form-group required">
                           <label class="col-sm-2 control-label" for="input-captcha"><?php echo $entry_captcha; ?></label>
                           <div class="col-sm-10">
                             <input type="text" name="captcha" id="input-captcha" class="form-control" />
@@ -99,14 +100,8 @@
                               <div class="text-danger"><?php echo $error_captcha; ?></div>
                             <?php } ?>
                           </div>
-                        </div>
+                        </div> -->
                       </fieldset>
-                      <div class="modal-footer">
-                        <div class="pull-right">
-                          <input class="btn btn-primary" type="submit" value="Отправить" />
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Закрить</button>
-                        </div>
-                      </div>
                     </form>
                   </div>
               </div>
