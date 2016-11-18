@@ -915,3 +915,33 @@ h2.price {
 	background-repeat: no-repeat;
 	background-position: 0 -6px;
 }
+#shipping_address_firstname_input label:after{
+    content: '*';
+    color: red;
+    width: 2px;
+    height: 2px;
+    margin: 0 0 0 0;
+    top: 0;
+}
+#shipping_address_email_input label:after{
+    content: '*';
+    color: red;
+    width: 2px;
+    height: 2px;
+    margin: 0 0 0 0;
+    top: 0;
+}
+
+#shipping_address_phone_input label:after{
+    content: '*';
+    color: red;
+    width: 2px;
+    height: 2px;
+    margin: 0 0 0 0;
+    top: 0;
+}
+
+.categoryContent h2{
+    font-size:26px !important;
+    margin:15px 5px 10px 5px;
+}

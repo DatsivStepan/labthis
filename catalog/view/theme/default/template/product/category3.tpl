@@ -11,7 +11,7 @@
 </div>
 <div class="cont_wr mw clf">
 
-    <div class="cont_box bw clf">
+    <div class="cont_box bw clf categoryContent">
         <?= $description; ?>
     </div>
 <!--
