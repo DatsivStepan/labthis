@@ -78,17 +78,44 @@ div.required .control-label:before {
 .delete {
     color: #e4e4e4;
 }
-
-
-
-.form_box .btn_submit:active {
-  box-shadow: inset 0 2px 2px rgba(0,0,0,0.2);
+.minus {
+    width: 25px;
+    height: 24px;
+    font-size: 0 !important;
+    border: 1px solid #dedddd;
+    outline: none;
+    border-radius: 0!important;
+    background-color: #fff!important;
+    background-image: url(../img/ico/pl_min.jpg)!important;
+    background-repeat: no-repeat!important;
+    background-position: 0 0;
 }
-.form_box .btn_submit.disabled,
-.form_box .btn_submit.disabled:hover {
-  background: #afdde6;
-  cursor: default;
+.plus{
+    right: 0;
+    left: auto;
+    width: 25px;
+    height: 24px;
+    border: 1px solid #dedddd;
+    outline: none;
+    border-radius: 0!important;
+    background-color: #fff!important;
+    background-image: url(../img/ico/pl_min.jpg)!important;
+    background-repeat: no-repeat!important;
+    background-position: -24px 0!important;
 }
+.minus:hover {
+    height: 24px!important;
+    background-position: 0 -25px!important;
+    border: 2px solid #0072b6!important;
+}
+.plus:hover {
+    height: 24px!important;
+    background-position: -24px -25px!important;
+    border: 2px solid #0072b6!important;
+}
+
+
+
 /* Gradent to all drop down menus */
 .dropdown-menu li > a:hover {
 	text-decoration: none;

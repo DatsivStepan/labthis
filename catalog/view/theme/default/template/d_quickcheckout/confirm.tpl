@@ -4,57 +4,53 @@
 	Dreamvention.com 
 	d_quickcheckout/confirm.tpl 
 -->
-<div id="confirm_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>" style="border-top: 1px solid #dedddd;"></div>
+<div id="confirm_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>"></div>
 <script type="text/html" id="confirm_template">
-<div id="confirm_wrap">
-	<div class="">
-		<div class="panel-body form_box">
-					<form name="form" class="form-horizontal" novalidate="novalidate">
-			<div class="container">
-<div class="row"><h4 class="text-center"><b>ОФОРМЛЕНИЕ ЗАКАЗА</b></h4></div>
-<div class="row">
-     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div class="row" style="    padding-top: 10px;   padding-bottom: 20px;"> <b>Контактная информация:</b> </div>
-    <div class="row"> 
-    <div id="shipping_address_firstname_input" class="text-input form-group  sort-item   required" data-sort="1">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_firstname"> 
-			            <span class="text" title=""> Контактное лицо</span> 
+		<div class="panel-body cont_text fix_p fl mw clf">
+					<form name="form" class="form-horizontal" novalidate="novalidate" style="color: black;">
+
+<p class="baskt_art">ОФОРМЛЕНИЕ ЗАКАЗА</p>
+<div class="form_wr mw cb clf">
+     <div class="form_box_wr fl clf">
+    <h4 style="    margin: 0px 0 34px 0;
+    font: 14px 'nsb';">Контактная информация:</h4>
+    <div class="form_box fl clf"> 
+    <div id="shipping_address_firstname_input" class="form_cont mw clf" data-sort="1">
+			        
+			          <label class="" for="shipping_address_firstname"> 
+			             Контактное лицо
 			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="firstname" id="shipping_address_firstname" value="" class="form-control  required firstname" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!"><span style="color:red" id="firstnamef"></span>
-			        </div>
+			          <span style="color:red" id="firstnamef"></span>
+			          <input type="text" name="firstname" id="shipping_address_firstname" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!">
+			          
+			       
 	</div>
-    <div id="shipping_address_email_input"     class="text-input form-group  sort-item   required" data-sort="2">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_email"> 
+    <div id="shipping_address_email_input"     class="form_cont mw clf" data-sort="2">
+			        
+			          <label class="" for="shipping_address_email"> 
 			            <span class="text" title=""> E-mail</span> 
 			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="emails" id="shipping_address_email" value="" class="form-control  required email" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!"><span style="color:red" id="emailsf"></span>
-			        </div>
+			        <span style="color:red" id="emailsf"></span>
+			          <input type="text" name="emails" id="shipping_address_email" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!">
+			       
 	</div>
-    <div id="shipping_address_phone_input"     class="text-input form-group  sort-item   required" data-sort="3">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_phone"> 
+    <div id="shipping_address_phone_input"     class="form_cont mw clf" data-sort="3">
+			       
+			          <label class="" for="shipping_address_phone"> 
 			            <span class="text" title="">Телефон</span> 
 			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="phone" id="shipping_address_phone" value="" class="form-control  required phone" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!"><span style="color:red" id="phonef">
-			        </div>
+			        <span style="color:red" id="phonef"></span> 
+			          <input type="text" name="phone" id="shipping_address_phone" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!">
+			       
 	</div>
-    <div id="shipping_address_phone2_input"    class="text-input form-group  sort-item  " data-sort="4">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_phone2"> 
+    <div id="shipping_address_phone2_input"    class="form_cont dot_f mw clf" data-sort="4">
+			     
+			          <label class="" for="shipping_address_phone2"> 
 			            <span class="text" title="">Доп. телефон</span> 
 			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="phone2" id="shipping_address_phone2" value="" class="form-control  required phone2" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Доп. телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Доп. телефон должно быть от 1 до 32 символов!">
-			        </div>
+			       
+			          <input type="text" name="phone2" id="shipping_address_phone2" value="" class="" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Доп. телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Доп. телефон должно быть от 1 до 32 символов!">
+			        
 	</div>
      
       
@@ -63,129 +59,104 @@
     
     
      </div>
-     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " >
-     <div class="row" style="    padding-top: 10px;   padding-bottom: 20px;"> <b>Способ доставки:</b> </div>
-   <div class="row">
-     <div id="divone" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center sposdost " onclick="divactiveone()">
-     
-     <div class="row"><img class="" src="./image/car.png"></div>
-      <div class="row" style="padding-top: 15px;"><b>ДОСТАВКА</b></div>
-     
-     
-     </div>
-     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-     <input type="text" name="sposdost" id="sposdost" value="САМОВЫВОЗ" class="hidden"> </div>
-     <div id="divtoo" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center sposdost " onclick="divactivetoo()">
-    <div class="row"><img class="" src="./image/shop.png"></div>
-      <div class="row" style="padding-top: 15px;"><b>САМОВЫВОЗ</b></div>
+     <div class="form_box_wr fix_btn fr clf" >
+     <h4>Способ доставки:</h4>
+  
+      <div class="form_box fl clf">
+                                    <button id="divone" onclick="divactiveone()" class="delivery_btn hb fl clf">
+                                        <span>Доставка</span>
+                                    </button>
+                                    <button id="divtoo" class="pickup_btn hb fr clf" onclick="divactivetoo()">
+                                        <span>самовывоз</span>
+                                    </button> 
+                                    <input type="text" name="sposdost" id="sposdost" value="САМОВЫВОЗ" class="hidden"> 
+                                    
+                                    </div>     
+                                </div>
     
-    </div>
-    </div>
+    
+  
+
+  
+   
     </div>
     
-</div>
-<div class="row">
-     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <div class="row" style="    padding-top: 10px;   padding-bottom: 20px;"> <b>Дополнительная информация:</b> </div>
-          <div class="row"> 
+
+
+     <div class="form_wr mw cb clf">
+  
+          <div class="form_box_wr dot_f fl clf">
+          <h4>Дополнительная информация:</h4>
+          <div class="form_box fl clf"> 
          
-          <div id="shipping_address_custom_field.address.6_input" class="text-input form-group  sort-item   " data-sort="1">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_custom_field.address.5"> 
-			            <span class="text" title=""> Комментарий к заказу</span> 
-			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <textarea name="address5" id="shipping_address_custom_field.address.6" class="form-control validate textarea custom_field.address.5" autocomplite="on" placeholder=""></textarea>
-			        </div>
+          <div id="shipping_address_custom_field.address.6_input" class="form_cont tar_f mw clf" >
+			       
+			          <label class="" for="shipping_address_custom_field.address.5">Комментарий к заказу</label>
+			       
+			          <textarea name="address5" id="shipping_address_custom_field.address.6" class="" autocomplite="on" placeholder=""></textarea>
+			       
 			      </div>
-          <div id="shipping_address_custom_field.address.6_input" class="text-input form-group  sort-item   " data-sort="2">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_custom_field.address.6"> 
-			            <span class="text" title=""> Реквизиты<br>
-(для юридического лица)</span> 
+          <div id="shipping_address_custom_field.address.6_input" class="form_cont dot_f tar_f mw clf" >
+			        
+			          <label class="" for="shipping_address_custom_field.address.6">Реквизиты<br>(для юридического лица)
 			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <textarea name="address6" id="shipping_address_custom_field.address.6" class="form-control validate required textarea custom_field.address.6" autocomplite="on" placeholder=""></textarea>
-			        </div>
+			          <textarea name="address6" id="shipping_address_custom_field.address.6" class="" autocomplite="on" placeholder=""></textarea>
+			       
 			      </div>      
-		 <div id="shipping_address_custom_field.address.4_input" class="text-input form-group  sort-item" data-sort="3">
-			        <div class="col-xs-3">
+		 <div id="shipping_address_custom_field.address.4_input" class="load_file_box fr clf">
+			     
+                <div class="jq-file" style="display: inline-block; position: relative; overflow: hidden;">
+                <input name="address4" type="file" style="position: absolute; top: 0px; right: 0px; margin: 0px; padding: 0px; opacity: 0; font-size: 100px;"></div>
+                
+                
+                
+			       
+                 
+			        
 			          
-			        </div>
-			        <div class="col-xs-8"> 
-                  <span class="btn btn-link btn-file">
-			          <input onchange="fileup()" type="file" name="address4" id="shipping_address_custom_field.address.4" value="" class="" autocomplite="on" placeholder="">
-			           <span style="margin-left: 15px;    border-bottom: 3px dotted #0072b6;    color: #0072b6;">ЗАГРУЗИТЬ РЕКВИЗИТЫ</span><br><span style="    padding-left: 10px;  color: #0173B6;" id="filef">
-			        </span>
-			        </span></div>
-			       </div>	     
-          </div>
+          </div> </div>
           
      </div>
-     <div id="adresshide" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 hidden">
-       <div class="row" style="    padding-top: 10px;   padding-bottom: 20px;"> <b>Адрес доставки::</b> </div>
-    <div class="row"> 
-    <div id="shipping_address_firstname_input" class="text-input form-group  sort-item   required" data-sort="1">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_firstname"> 
-			            <span class="text" title=""> Город</span> 
-			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="gorod" id="shipping_address_firstname" value="" class="form-control  required firstname" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Имя должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Имя должно быть от 1 до 32 символов!"><span style="color:red" id="gorodf">
-			        </div>
-	</div>
-    <div id="shipping_address_email_input"     class="text-input form-group  sort-item   required" data-sort="2">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_email"> 
-			            <span class="text" title=""> Улица</span> 
-			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="ylica" id="shipping_address_email" value="" class="form-control  required email" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="email должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="email должно быть от 1 до 32 символов!"><span style="color:red" id="ylicaf">
-			        </div>
-	</div>
-    <div id="shipping_address_phone_input"     class="text-input form-group  sort-item   required" data-sort="3">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_phone"> 
-			            <span class="text" title="">Дом</span> 
-			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="dom" id="shipping_address_phone" value="" class="form-control  required phone" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Телефон должно быть от 1 до 32 символов!"><span style="color:red" id="domf">
-			        </div>
-	</div>
-    <div id="shipping_address_phone2_input"    class="text-input form-group  sort-item   required" data-sort="4">
-			        <div class="col-xs-3">
-			          <label class="control-label" for="shipping_address_phone2"> 
-			            <span class="text" title="">Квартира</span> 
-			          </label>
-			        </div>
-			        <div class="col-xs-8"> 
-			          <input type="text" name="kvar" id="shipping_address_phone2" value="" class="form-control  required phone2" autocomplite="on" placeholder="" data-rule-minlength="1" data-msg-minlength="Доп. телефон должно быть от 1 до 32 символов!" data-rule-maxlength="32" data-msg-maxlength="Доп. телефон должно быть от 1 до 32 символов!">
-			        </div>
-	</div>
      
+      <div id="adresshide" class="form_box_wr fr clf hidden">
       
+     <h4>Адрес доставки:</h4>
+    <div class="form_box fl clf"> 
+    
+     <div class="form_cont mw clf">
+         <label>Город</label><span style="color:red" id="gorodf"></span><input name="gorod" type="text" placeholder="Москва" name="" value="">
+                                    </div>
+                                    <div class="form_cont mw clf">
+                                        <label>Улица</label><span style="color:red" id="ylicaf"></span><input name="ylica" type="text" name="" value="">
+                                    </div>
+                                    <div class="form_cont mw clf">
+                                        <label>Дом</label><span style="color:red" id="domf"></span><input  name="dom" type="text" name="" value="">
+                                    </div>
+                                    <div class="form_cont mw clf">
+                                        <label>Квартира</label><input name="kvar" type="text" name="" value="">
+                                    </div>
+    
+       
     </div>
     </div>
     
 </div>
-</div>
 </form>
-			
-			<div class="row" style="border-top: 1px solid #dedddd; padding-top: 20px;     margin-top: 20px; margin-bottom: 65px;">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
-			<button onclick="addorder()"  class="btn btn-link btn-lg btn-block" <%= model.show_confirm ? '' : 'disabled="disabled"' %> style="background-color: #0072b6; text-decoration: none; color: #ffffff;">Оформить заказ</span></button>
-            </div></div>
-		</div>
-	</div>
+ <div class="row"></div>
+                    <div class="split_bskt"></div>
+
+                        <button onclick="addorder()" class="bay_btn hb mw clf" href="#" tabindex="0">Оформить заказ</button>
 </div>
+                  
+			
+			
+            
+
+
 </script>
 <script>
     function fileup(){
+        console.log(document.getElementById('filef').value);
    document.getElementById('filef').innerHTML='файл загружен'; 
     }
    function divactiveone(){
@@ -295,5 +266,99 @@ $(function() {
 		template: _.template($("#confirm_template").html())
 	}));
 });
+
+    
+    $(document).ready(function() {
+	/*Main SL*/
+  $('.main_sl_box').slick({
+  	  autoplay: true,
+  	  autoplaySpeed: 2990,
+  	  pauseOnHover: true,
+  	  dots: true,
+  	  arrows: true,
+	  infinite: true,
+	  speed: 300
+  });
+  /*Item SL*/
+  $('.product_sl').slick({
+  	  autoplay: true,
+  	  autoplaySpeed: 2990,
+  	  pauseOnHover: true,
+  	  dots: true,
+  	  arrows: false,
+	  infinite: true,
+	  speed: 300
+  });
+
+  $('.item_sl').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: false,
+	  asNavFor: '.item_sl_nav'
+  });
+  $('.item_sl_nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: '.item_sl',
+	  dots: false,
+	  centerMode: false,
+	  focusOnSelect: true
+  });
+
+  /*Inpeut Namb*/
+  $('.namber_box input').styler();
+
+  /*Clear Inpu Placeholder*/
+  $('input,textarea').focus(function(){
+   $(this).data('placeholder',$(this).attr('placeholder'))
+   $(this).attr('placeholder','');
+ });
+ $('input,textarea').blur(function(){
+   $(this).attr('placeholder',$(this).data('placeholder'));
+ });
+
+  /*File Style*/	
+  $('.load_file_box input, .cast_check').styler();
+
+  /*Add/Remo Class*/
+	$('.form_box button').click(function(e) {
+		
+		var tg = e.target || e.srcElement;
+		var lv = $('.form_box');
+		var x = lv.find('button');
+		var stl = $(tg).hasClass('act_btn');
+
+		for (var i = 0; i < x.length; i++) {
+			a = x[i];
+		}
+
+		if (a = tg) {
+			var foo = function() {
+				console.log(tg);
+				if ( stl != true ) {
+					var rem = function() {
+						$('.form_box button').removeClass('act_btn'),
+						$(tg).addClass('act_btn')
+					}
+					rem();
+				} else {
+					$(tg).removeClass('act_btn');
+				}
+			}
+			foo();
+		}
+        return false;
+
+	});
+
+	/*Basket Remove Item*/
+	$('.close_box').click(function() {
+        $(this).parents(".baskr_item_box").slideUp(500,
+        	function(){$(this).remove();
+        });	
+    });
+});
+
 
 </script>

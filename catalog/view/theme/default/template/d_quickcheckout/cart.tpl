@@ -14,81 +14,116 @@
 		</div>
 -->
     
-		<div class="qc-checkout-product panel-body" >
-			<p class="text"><%= model.config.description %></p>
-			<% if(model.error){ %>
-				<div class="alert alert-danger">
-					<i class="fa fa-exclamation-circle"></i> <%= model.error %>
-				</div>
-			<% } %>
-                    
-                        <div class="row"><h3 class="row text-center"><b style="color: #000000;" class='baskt_art'>ВАШ ЗАКАЗ</b></h3></div>
-                        <div class="it_section_name bw clf">
+		<div class="cont_text fix_p cb mw clf" >
+
+        <p class="baskt_art">ВАШ ЗАКАЗ</p>
+    <div class="it_section_name bw clf">
                             <div class="sect_name clf">наименование</div>
                             <div class="sect_price clf">цена</div>
                             <div class="sect_keywrd clf">кол-во</div>
                             <div class="sect_sum clf">сумма</div>
                         </div>
-      
-        	
-                            <% _.each(model.products, function(product) { %>
-					
-                            <div class="row chekouttovar" <%= product.stock ? '' : 'class="stock"' %>>
-                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chekouttovarline">
-                                    <img class="chekouttovarimg" src="<%= product.thumb %>" class="img-responsive"/>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 chekouttovarline text-center">	
-                                        <a href="<%= product.href %>" <%=  model.config.columns.image ? '' : 'rel="popup" data-help=\'<img src="' + product.image + '"/>\'' %>> 
-                                                <%= product.name %> <%= product.stock ? '' : '<span class="out-of-stock">***</span>' %>
-                                        </a>
-                                        <% _.each(product.option, function(option) { %>
-                                                <div> &nbsp;<small> - <%= option.name %>: <%= option.value %></small> </div>
-                                        <% }) %>
 
-                                        <% if(parseInt(model.config.columns.price) && model.show_price){ %>
-                                                <div class="qc-name-price visible-xs-block "><small><span class="title"><?php echo $column_price; ?>:</span> <span class="text"><%= product.price %></span></small></div>
-                                        <% } %>
-                                </div>
-							
-                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chekouttovarline text-center"><b><span class="text"><%= product.price %></span></b></div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chekouttovarline" style="padding: 30px;">
-                                        <span class="input-group-btn" style="    float: left;    width: 30px;">
-                                                <button style="border: 1px solid #ccc;" class="btn btn-link decrease hidden-xs" data-product="<%= product.key %>">-</button>
-                                        </span>            
-                                        <input style="    float: left;    width: 50px; border-radius: 0;" type="text" data-mask="9?999999999999999" value="<%= product.quantity %>" class="qc-product-qantity form-control text-center" name="cart.<%= product.key %>"  data-refresh="2"/>
-                                        <span class="input-group-btn" style="    float: left;    width: 20px;">
-                                                <button style="border: 1px solid #ccc;" class="btn btn-link increase hidden-xs" data-product="<%= product.key %>">+</button>
-                                        </span>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chekouttovarline text-center"><b><%= product.total %></b></div>
-                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 chekouttovarline"><button class="btn btn-link delete hidden-xs" data-product="<%= product.key %>"><i class="fa fa-times"></i></button></div>
-				</div>
-					 
-                            <% }) %>
+
+					<div class="baskr_item_wr  mw clf" style="color: black;">
+					<% _.each(model.products, function(product) { %>
 					
-                            <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
-                                Срочный заказ на испытания 
-                                <input onclick="zakx2Function()" id="zakx2" class="checart" type="checkbox" name="confirm.agree" id="confirm_agree" class="validate required" required="" value="1">
-                            </div>      
-		<div class="row">	
-                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 infoskud">
-                    <span>!</span>
+					<div class="baskr_item_box mw clf" <%= product.stock ? '' : 'class="stock"' %>>
+
+
+
+                                <div class="itm_img fl clf">
+                                    <a href="<%= product.href %>">
+                                        <img src="<%= product.thumb %>" alt="img" style="width: 55%;">
+                                    </a>
+                                </div>
+
+                                <div class="itm_name fl clf">
+                                    <a href="<%= product.href %>">
+                                    <%= product.name %>
+                                    </a>
+                                </div>
+
+                                <div class="itm_price fl clf" style="color: #2f0000;">
+                                     <%= product.price %>
+                                </div>
+
+                                <div class="itm_nuumber fl clf">
+                                    <div class="namber_box section number-plus-minus fr clf">
+                                        <div class="jq-number">
+                                        <div class="jq-number__field" style="    width: 90px; border: 0px!important;">
+
+                               	<span class="input-group-btn" style="    float: left;    width: 25px;">
+									<button style="border: 1px solid #ccc;" class="btn btn-link decrease minus " data-product="<%= product.key %>">-</button>
+								</span>
+								<input style="padding: 0px; float: left; border-top: 1px solid #dedddd !important;
+    border-bottom: 1px solid #dedddd !important;    width: 30px; height: 24px;" min="1" type="text" data-mask="9?999999999999999" value="<%= product.quantity %>" class="qc-product-qantity form-control text-center" name="cart.<%= product.key %>"  data-refresh="2"/>
+								<span class="input-group-btn" style="    float: left;    width: 25px;">
+									<button style="border: 1px solid #ccc;" class="btn btn-link increase plus" data-product="<%= product.key %>"></button>
+
+
+								</span>
+                                        </div></div>
+                                    </div>
+                                </div>
+
+                                <div class="itm_sum fl clf" style="color: #2f0000;">
+                                    <%= product.total %>
+                                </div>
+
+                                <div class="close_box fr clf delete">
+                                </div>
+                            </div>
+
+
+
+					 
+					<% }) %>
+					 </div>
+
+
+              <div class="cont_text fix_p cb mw clf">
+                        <!--Fast Order-->
+                        <div class="urgently_order fl clf">
+                            <p class="fl clf">Срочный заказ на испытания</p>
+
+
+                            <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
+
+                            <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;">
+
+
+
+                            </div>
+                        </div>
+
+                        <!--Alert Info-->
+                        <div class="alert_text_box cb fl clf">
+                            <img src="image/varn.png" alt="img">
+
 				<% if( model.totals[2]['value'] < '5000'){ %>
-			  Сделав заказ на сумму более 5000 вы получите доставку в подарок
+
+                        <p>При сумме заказа более <span>5000 руб.</span></p>
+                       <p>«Бесплатная доставка»</p>
 			    <% } %>
 		        <% if( model.totals[2]['value'] > '5000' ){ %>
-			 Сделав заказ на сумму более 10000 вы получите самовывоз и  доставку в подарок
+		                <p>При сумме заказа более <span>10000 руб.</span></p>
+                       <p>«Бесплатный самовывоз, доставка»</p>
+
 			    <% } %>
 				<% if( model.totals[2]['value'] > '10000' ){ %>
-			 Сделав заказ на сумму более 100000 вы получите скидку 5%
+			           <p>При сумме заказа более <span>100000 руб.</span></p>
+                       <p>«Бесплатный самовывоз, доставка и скидка 5%»</p>
 			    <% } %>
-		</div> 
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> </div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <div class="row">Товаров на <b><%= model.totals[0]['value'] %></b> </div> 
-            <div class="row" id="srochzak" style="display:none;">Срочный заказ на испытания <b>Х2</b> </div> 
-            <div class="row">Ваш подарок: 
-		<% if( (model.totals[2]['value'] > '5000') && (model.totals[2]['value'] < '10000') ){ %>
+
+                        </div>
+
+                        <!--Total Price-->
+                        <div class="total_bay_box fr clf">
+                            <ul class="clf">
+                                <li>Товаров на <span><%= model.totals[0]['value'] %> руб.</span></li>
+                                <li id="srochzak" style="display:none;">Срочный заказ на испытания <span>Х2</span></li>
+                                <li>Ваш подарок: <% if( (model.totals[2]['value'] > '5000') && (model.totals[2]['value'] < '10000') ){ %>
 			
 			 Бесплатная доставка
 			<% } %>
@@ -100,25 +135,61 @@
 			<% if( model.totals[2]['value'] >  '100000' ){ %>
 			
 			 Бесплатный самовывоз, доставка и скидка 5%
-			<% } %>
-            </div> 
-            <div class="row" style="padding-top: 10px; padding-bottom: 10px;"><span style="font-size: 140%;">Итого:</span> <span id="totalprise" value="<%= model.totals[2]['value'] %>" style="font-size: 140%;     color: #0072b6;"><%= model.totals[2]['value'] %></span><span style="font-size: 140%;     color: #0072b6;"> руб.</span> </div> 
+			<% } %></li>
+                            </ul>
+
+                            <p class="total_price fl clf">Итого:
+                              <span id="totalprise" value="<%= model.totals[2]['value'] %>">
+               <%= model.totals[2]['value'] %> </span><span>руб.</span>
+                           </p>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               </div> 
 
 			
 			</div> 
-			<div class="preloader row"><img class="icon" src="image/<%= config.general.loader %>" /></div>
+
 		
 		</div>
 	</div>
+
+	<div class="split_bskt"></div>
 
 </script>
 
 <script>
 
    function zakx2Function() {
+       if(document.getElementById("zakx2").checked == true) {document.getElementById("zakx2").checked = false;}else{
+           document.getElementById("zakx2").checked = true;
+       }
+
     var totalprise = document.getElementById('totalprise').innerHTML;
+       var checet = document.getElementById("checklass").classList;
     if(document.getElementById("zakx2").checked == true) {
+
+        checet.add("checked");
+
         totalprise=totalprise*2;
         var array = {
                 'status' : '1'
@@ -138,6 +209,7 @@
        document.getElementById('srochzak').style.display = 'block';
     }
     if(document.getElementById("zakx2").checked == false){
+        checet.remove("checked");
         totalprise=totalprise/2;
            var array = {
                 'status' : '0'
