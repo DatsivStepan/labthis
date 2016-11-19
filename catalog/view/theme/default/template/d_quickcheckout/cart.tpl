@@ -98,7 +98,7 @@
                         </div>
 
                         <!--Alert Info-->
-                        <div class="alert_text_box cb fl clf">
+                        <div class="alert_text_box cb fl clf" style="height:auto;padding-bottom:15px;">
                             <img src="image/varn.png" alt="img">
 
 				<% if( model.totals[2]['value'] < '5000'){ %>
@@ -119,7 +119,7 @@
                         </div>
 
                         <!--Total Price-->
-                        <div class="total_bay_box fr clf">
+                        <div class="total_bay_box fr clf" style="max-width:280px;">
                             <ul class="clf">
                                 <li>Товаров на <span><%= model.totals[0]['value'] %> руб.</span></li>
                                 <li id="srochzak" style="display:none;">Срочный заказ на испытания <span>Х2</span></li>
