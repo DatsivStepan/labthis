@@ -12,9 +12,10 @@
 <?php if (!isset($open)) { ?>
 
 <div id="callme_modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document" style="width:380px;">
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body"  style="background-color: #002b4c;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;"><span aria-hidden="true" style="color:white;">&times;</span></button>
        <div class="callme_load"></div>
       </div>
     </div>
@@ -26,7 +27,7 @@
 $(document).ready(function() {
 	$('.callme').on('click', function() {
 		var product_id = ($(this).data("product_id") > 0) ? $(this).data("product_id") : '';
-		$('.callme_load').html('<iframe src="./index.php?route=module/callme/open&prod_id='+ product_id +'" width="340" height="'+<?php echo $callme_setting['height']; ?>+'" frameborder="0">Загрузка</iframe>');
+		$('.callme_load').html('<iframe src="./index.php?route=module/callme/open&prod_id='+ product_id +'" width="380" height="450" frameborder="0" style="border-radius:0px;">Загрузка</iframe>');
 			$('#callme_modal').modal('show');
 	});
 });
@@ -38,7 +39,7 @@ $(document).ready(function() {
 <?php if (isset($open)) { ?>
 
  <!DOCTYPE html>
-<html dir="ltr" lang="ru">
+<html dir="ltr" lang="ru" style="background-color: #002b4c;">
 <head>
 <meta charset="UTF-8" />
 <base href="<?php echo $base; ?>" />
@@ -53,7 +54,23 @@ input {text-align:center;}
 .bg-success {font-weight:bold !important; color:#287A27  !important; padding: 10px 0;}
 .text-danger {font-weight:bold;}
 .gdehomos{display:none;}
-
+.formContactClass{
+    width: 100%;
+    float: right;
+    outline: none;
+    border: 2px solid #dedddd;
+    border-radius: 22px;
+    padding: 11px 0 12px 23px;
+    margin: 2px 0 0 0;
+    font: 13px 'nsr';
+    color: #a09a9a;
+    box-sizing: border-box;
+    resize: none;
+}
+.labelAfter:after{
+    content: '* ';
+    color: #F00;
+    font-weight: bold;}
 /*
 label {color:#47A946  !important;}
 button {background:#47A946  !important; color:#fff !important;}
@@ -63,26 +80,25 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 </style>
 
 </head>
-
 <body id="callme">
-<div id="wrap">
+<div id="wrap" style="background-color: #002b4c;">
 
-	<h3><?php echo $heading_title; ?></h3>
+	<h3 style="margin:15px 0px 5px 0px;font-size:24px;text-align:center;color:white;    font: 21px 'nsb';"><?php echo $heading_title; ?></h3>
 
 
 	<form class="form-horizontal" role="form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" >
 
 		<div class="form-group <?php echo ($error_name) ? 'has-error' :''; ?>" style="text-align: left;">
-			<label for="name" class="col-sm-2 control-label" style="font: 14px 'nsb';"><?php echo $entry_name; ?></label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="name" name="name" style="text-align: left;"  value="<?php echo $name; ?>" placeholder="<?php echo ($error_name) ? $error_name : $entry_name; ?>">
+			<label for="name" class="col-sm-12 control-label labelAfter" style="font: 13px 'nsr';padding-top:5px;padding-bottom:5px;color:white;text-align: left">Ваше имя</label>
+			<div class="col-sm-12">
+				<input type="text" class="formContactClass" id="name" name="name" style="text-align: left;"  value="<?php echo $name; ?>" placeholder="<?php echo ($error_name) ? $error_name : $entry_name; ?>">
 			</div>
 		</div>
 
 		<div class="form-group <?php echo ($error_tel) ? 'has-error ' :''; ?>" style="text-align: left;">
-			<label for="tel" class="col-sm-2 control-label"><?php echo $entry_tel; ?></label>
-			<div class="col-sm-10">
-				<input type="tel" class="form-control" id="tel" name="tel" style="text-align: left;"  value="<?php echo $tel; ?>" placeholder="<?php echo ($error_tel) ? $error_tel : $entry_tel; ?>">
+			<label for="tel" class="col-sm-12 control-label labelAfter" style="font: 13px 'nsr';padding-top:5px;padding-bottom:5px;color:white;text-align: left">Телефон</label>
+			<div class="col-sm-12">
+				<input type="tel" class="formContactClass" id="tel" name="tel" style="text-align: left;"  value="<?php echo $tel; ?>" placeholder="<?php echo ($error_tel) ? $error_tel : $entry_tel; ?>">
 			</div>
 		</div>
 
@@ -102,9 +118,9 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 		<?php } ?>
 
 		<div class="form-group" style="text-align: left;">
-			<label for="enquiry" class="col-sm-2 control-label" ><?php echo $entry_enquiry; ?></label>
-			<div class="col-sm-10">
-				<textarea class="form-control" style="text-align: left;" rows="3" id="enquiry" name="enquiry"  value="<?php echo $enquiry; ?>" > </textarea>
+			<label for="enquiry" class="col-sm-12 control-label labelAfter" style="font: 13px 'nsr';padding-top:5px;padding-bottom:5px;color:white;text-align: left">Дополнительная информация</label>
+			<div class="col-sm-12">
+				<textarea class="formContactClass" style="text-align: left;" rows="3" id="enquiry" name="enquiry"  value="<?php echo $enquiry; ?>" > </textarea>
 			</div>
 		</div>
 
@@ -143,13 +159,14 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
     font: 14px 'nsb';
     color: #fff !important;
     text-decoration: none;
-    margin: 17px 0 0 0 !important;
+    margin: 17px 0 20px 0 !important;
     padding: 12px 0;
     text-align: center;
     border:0px;
     background-color: #0072b6;"><?php echo $button_send; ?></button>
 			</div>
 		</div>
+                <div style="clear:both;"></div>
 		<?php } ?>
 
 	</form>

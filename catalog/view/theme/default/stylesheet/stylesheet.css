@@ -945,3 +945,33 @@ h2.price {
     font-size:26px !important;
     margin:15px 5px 10px 5px;
 }
+.call_btn.hb.callme:hover{
+    color:white !important;
+}
+.call_btn.hb.callme{
+    cursor:pointer;
+}
+.bay_btn_f.hb.mw.clf.quickOrder:hover{
+    border-color:#0489d8;
+    background-color:#0489d8;
+    color:white;
+}
+.formContactClass{
+    width: 100%;
+    float: right;
+    outline: none;
+    border: 2px solid #dedddd;
+    border-radius: 22px;
+    padding: 11px 0 12px 23px;
+    margin: 2px 0 0 0;
+    font: 13px 'nsr';
+    color: #a09a9a;
+    box-sizing: border-box;
+    resize: none;
+}
+.categoryContent h1,h2,h3,h4{
+    font-family: 'nsb' !important;
+}
+.categoryContent{
+    font-family: 'nsr';
+}

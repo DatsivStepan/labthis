@@ -148,7 +148,7 @@
  <div class="row"></div>
                     <div class="split_bskt"></div>
 
-                        <button onclick="addorder()" class="bay_btn hb mw clf" href="#" tabindex="0">Оформить заказ</button>
+                        <button onclick="addorder()" class="bay_btn hb mw clf" style="border:0px;" href="#" tabindex="0">Оформить заказ</button>
 </div>
                   
 			
