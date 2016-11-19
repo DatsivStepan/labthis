@@ -3,9 +3,9 @@
         <?php foreach ($banners as $banner) { ?>
             <div class="ls_item_box">
                 <?php if ($banner['link']) { ?>
-                    <img src="<?php echo $banner['image']; ?>" style="width:100%;">
+                    <img src="<?php echo $banner['image']; ?>">
                 <?php } else { ?>
-                    <img src="<?php echo $banner['image']; ?>" style="width:100%;">
+                    <img src="<?php echo $banner['image']; ?>">
                 <?php } ?>
                 <div class="ls_item">
                     <!--<p>Лучшие цены на испытания<br/> в Москве и Московской<br/> области</p>-->

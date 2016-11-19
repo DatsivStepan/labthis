@@ -58,7 +58,7 @@
 <div class="sticky_nav_wr mw clf">
     <div class="sticky_nav bw clf">
         <ul class="clf fl">
-            <li><a class="nav_locat" href="#"><?= $address; ?></a></li>
+            <li><a class="nav_locat" href="../../../index.php?route=information/contact"><?= $address; ?></a></li>
             <li><a class="nav_tel" href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a></li>
             <li><a class="nav_app" href="#">Мы есть в Whatsapp / Viber</a></li>
         </ul>

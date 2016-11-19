@@ -61,9 +61,9 @@
             </div>
 
             <div class="it_btn_box mw clf">
-                <a id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="bay_btn hb mw clf">В корзину</a>
-                <!--<a class="bay_btn hb mw clf" href="#" tabindex="0">В корзину</a>
-                <a class="bay_btn_f hb mw clf" href="#" tabindex="0">Быстрый заказ</a> -->
+                <a id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="bay_btn hb mw clf"  style="cursor:pointer;">В корзину</a>
+                <!--<a class="bay_btn hb mw clf" href="#" tabindex="0">В корзину</a> -->
+                <a class="bay_btn_f hb mw clf quickOrder" tabindex="0" style="width:300px;cursor:pointer;">Перейти к оформлению заказа</a>
             </div>
 
             <div class="it_tech_info_box mw clf">
@@ -113,11 +113,18 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 });
 //--></script> 
 <script type="text/javascript"><!--
+    $(document).on('click','.quickOrder',function(){
+        $('#button-cart').trigger('click');
+        setTimeout(function(){
+            document.location = '/index.php?route=checkout/checkout';
+        }, 1000);
+    })
+
 $('#button-cart').on('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
-		data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+		data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea, #product input[name=\'quantity\']'),
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-cart').button('loading');
@@ -162,6 +169,7 @@ $('#button-cart').on('click', function() {
 		}
 	});
 });
+
 //--></script> 
 <script type="text/javascript"><!--
 $('.date').datetimepicker({

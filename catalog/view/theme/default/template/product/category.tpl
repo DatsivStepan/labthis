@@ -103,7 +103,7 @@
                         <?php } ?>
                     </li>
                     <li class="itl_btn fr clf">
-                        <a class="bay_btn hb mw clf" tabindex="0" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+                        <a class="bay_btn hb mw clf" style="cursor:pointer;" tabindex="0" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
                     </li>
                 </ul>
               <!--<div class="product-thumb">

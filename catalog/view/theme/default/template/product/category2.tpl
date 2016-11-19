@@ -159,7 +159,7 @@
                     <img src="./image/catalog/ico/check.jpg" alt="img">
                 </div>
 
-                <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+                <a class="bay_btn hb mw clf" style="cursor:pointer;"  onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
             </div>
             <?php } ?>
         </div>
