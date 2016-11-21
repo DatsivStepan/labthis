@@ -93,6 +93,18 @@ class ControllerDQuickcheckoutCart extends Controller {
 	}
 
     public function prepare($json){
+        
+         $i=1;
+             if (array_key_exists("totalsx2", $this->session->data)) {
+            if ($this->session->data['totalsx2']==1){
+               $i=2;  
+            }
+              if ($this->session->data['totalsx2']==0){
+               $i=1;  
+            }}else{
+               $this->session->data['totalsx2']=0;  
+             }
+        
         $this->load->language('checkout/cart');
         $this->load->model('tool/upload');
 
@@ -122,6 +134,7 @@ class ControllerDQuickcheckoutCart extends Controller {
         $products = $this->cart->getProducts();
         $this->load->model('tool/image');
         $json['products'] = array();
+        $pric=0;
         foreach ($products as $product) {
             $product_total = 0;
 
@@ -204,6 +217,14 @@ class ControllerDQuickcheckoutCart extends Controller {
                     $recurring .= sprintf($this->language->get('text_payment_until_canceled_description'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
                 }
             }
+           
+            if ($product['model']=='ИСЗ') {
+                 if (array_key_exists("totalsx2", $this->session->data)) {
+            if ($this->session->data['totalsx2']==1){
+               $i=2;}}
+           }else{
+               $i=1; 
+            }
 
             $json['products'][] = array(
                 'key'       => (isset($product['cart_id'])) ? $product['cart_id'] : $product['key'],
@@ -217,10 +238,11 @@ class ControllerDQuickcheckoutCart extends Controller {
                 'quantity'  => $product['quantity'],
                 'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
                 'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
-                'price'     => $price,
-                'total'     => $total,
+                'price'     => $price*$i,
+                'total'     => $total*$i,
                 'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
             );
+            $this->session->data['totalall'] = $pric=$pric+($total*$i);
             // fix for 2.1.0.0
             $json['cart'][(isset($product['cart_id'])) ? $product['cart_id'] : $product['key']] = $product['quantity'];
         
@@ -244,7 +266,7 @@ class ControllerDQuickcheckoutCart extends Controller {
         } else {
             $json['cart_weight'] = false;
         }
-
+       
         $json['cart_error'] = (!empty($data['error_warning'])) ? $data['error_warning'] : '';
 
         return $json;
@@ -281,7 +303,7 @@ class ControllerDQuickcheckoutCart extends Controller {
             //totals
             $json['totals'] = $this->session->data['totals'] = $this->model_d_quickcheckout_order->getTotals($total_data, $total, $taxes);
             $json['total'] = $this->model_d_quickcheckout_order->getCartTotal($total);
-
+            $json['totals'][2]['value'] = $this->session->data['totalall']; 
             //confirm
             $json['show_confirm'] = $this->model_d_quickcheckout_order->showConfirm();
 

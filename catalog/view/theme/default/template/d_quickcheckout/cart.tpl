@@ -1,4 +1,3 @@
-
 <div id="cart_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>"></div>
 <script type="text/html" id="cart_template">
   <div class="back_box_wr mw clf">
@@ -76,7 +75,6 @@
                             </div>
 
 
-
 					 
 					<% }) %>
 					 </div>
@@ -86,14 +84,14 @@
                         <!--Fast Order-->
                         <div class="urgently_order fl clf">
                             <p class="fl clf">Срочный заказ на испытания</p>
-
-
+                            <?php if($_SESSION['totalsx2']==0){ ?>
                             <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
-
-                            <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;">
-
-
-
+                             <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;">
+                            <?php } if($_SESSION['totalsx2']==1){ ?>
+                            <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf checked" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
+                             <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;" checked>
+                            <?php } ?>
+                           
                             </div>
                         </div>
 
@@ -106,7 +104,7 @@
                         <p>При сумме заказа более <span>5000 руб.</span></p>
                        <p>«Бесплатная доставка»</p>
 			    <% } %>
-		        <% if( model.totals[2]['value'] > '5000' ){ %>
+		        <% if( (model.totals[2]['value'] > '5000') &&  (model.totals[2]['value'] < '10000')){ %>
 		                <p>При сумме заказа более <span>10000 руб.</span></p>
                        <p>«Бесплатный самовывоз, доставка»</p>
 
@@ -122,7 +120,14 @@
                         <div class="total_bay_box fr clf" style="max-width:280px;">
                             <ul class="clf">
                                 <li>Товаров на <span><%= model.totals[0]['value'] %> руб.</span></li>
-                                <li id="srochzak" style="display:none;">Срочный заказ на испытания <span>Х2</span></li>
+                                
+                                    <?php if($_SESSION['totalsx2']==0){ ?>
+                             <li id="srochzak" style="display:none;">Срочный заказ на испытания <span>Х2</span></li>
+                            <?php } if($_SESSION['totalsx2']==1){ ?>
+                            <li id="srochzak"  style="display:block;">Срочный заказ на испытания <span>Х2</span></li>
+                            <?php } ?>
+                                
+                               
                                 <li>Ваш подарок: <% if( (model.totals[2]['value'] > '5000') && (model.totals[2]['value'] < '10000') ){ %>
 			
 			 Бесплатная доставка
@@ -139,31 +144,12 @@
                             </ul>
 
                             <p class="total_price fl clf">Итого:
-                              <span id="totalprise" value="<%= model.totals[2]['value'] %>">
+                              <span id="totalprise" value="<%= model.total_price %>">
                <%= model.totals[2]['value'] %> </span><span>руб.</span>
                            </p>
                         </div>
 
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               </div> 
 
 			
@@ -174,10 +160,11 @@
 	</div>
 
 	<div class="split_bskt"></div>
-
+ <% console.log(model); %> 
 </script>
 
 <script>
+
 
   function deletet(e){
        
@@ -189,7 +176,7 @@
     
   }
        
-       function zakx2Function() {
+  function zakx2Function() {
        if(document.getElementById("zakx2").checked == true) {document.getElementById("zakx2").checked = false;}else{
            document.getElementById("zakx2").checked = true;
        }
@@ -201,8 +188,13 @@
         checet.add("checked");
 
         totalprise=totalprise*2;
+        var summ = 0;
+$(".itm_sum").each(function(){
+summ += parseInt($(this).html(), 10);
+});
         var array = {
-                'status' : '1'
+                'status' : '1',
+                'summ' : summ
 			};
         	$.ajax({
 			url: 'index.php?route=d_quickcheckout/confirm/xtooprice',
@@ -238,8 +230,8 @@
 				});
         document.getElementById('srochzak').style.display = 'none';
     }
-      document.getElementById('totalprise').innerHTML = totalprise;
-       
+      
+    location.reload();   
 }
 
       

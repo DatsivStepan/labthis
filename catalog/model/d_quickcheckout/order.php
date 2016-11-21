@@ -183,7 +183,7 @@ class ModelDQuickcheckoutOrder extends Model {
 		if(isset($data['marketing_id'])) { $query = $query. " marketing_id = '" . (int)$data['marketing_id'] . "',"; }
         
         if(isset($data['shipping_contactname'])) { $query = $query. " shipping_contactname = '" . $this->db->escape($data['shipping_contactname']) . "',"; }
-         if(isset($data['shipping_zakx2'])) { $query = $query. " shipping_zakx2 = '" . $this->db->escape($data['shipping_zakx2']) . "',"; }
+        $query = $query. " shipping_zakx2 = '" . $this->session->data['totalsx2'] . "',";
         if(isset($data['shipping_email'])) { $query = $query. " shipping_email = '" . $this->db->escape($data['shipping_email']) . "',"; }
         if(isset($data['shipping_phone'])) { $query = $query. " shipping_phone = '" . $this->db->escape($data['shipping_phone']) . "',"; }
         if(isset($data['shipping_phone2'])) { $query = $query. " shipping_phone2 = '" . $this->db->escape($data['shipping_phone2']) . "',"; }
