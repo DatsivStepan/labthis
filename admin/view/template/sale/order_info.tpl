@@ -175,8 +175,8 @@
                 <td>
                
                 <?php
-                if($shipping_zakx2=='false'){echo ' <span style="color: blue;">нет</span>'; }
-              if($shipping_zakx2=='true'){echo ' <span style="color: red">да</span>'; }
+                if($shipping_zakx2=='0'){echo ' <span style="color: blue;">нет</span>'; }
+                if($shipping_zakx2=='1'){echo ' <span style="color: red">да</span>'; }
                
                
                ?>
