@@ -130,7 +130,7 @@
                 <?php if ($orders) { ?>
                 <?php foreach ($orders as $order) { 
                 $style="";
-                if ($order['shipping_zakx2']=='true') {
+                if ($order['shipping_zakx2']=='1') {
                 $style="background-color: rgba(255, 0, 0, 0.28);";
                 }
                 ?>
