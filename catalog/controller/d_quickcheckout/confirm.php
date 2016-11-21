@@ -625,10 +625,12 @@ class ControllerDQuickcheckoutConfirm extends Controller {
     
     public function xtooprice(){
         if($this->request->post['status']=='1'){
-            $this->session->data['totalall']=$this->session->data['totals']['2']['value']*2;
+            $this->session->data['totalall']=$this->request->post['summ'];
+            $this->session->data['totalsx2']=1;
         }
         elseif($this->request->post['status']=='0'){
             $this->session->data['totalall']=$this->session->data['totals']['2']['value'];
+            $this->session->data['totalsx2']=0;
         }
       
         $this->response->addHeader('Content-Type: application/json');

@@ -158,6 +158,7 @@
 
 </script>
 <script>
+
     function fileup(){
         console.log(document.getElementById('filef').value);
    document.getElementById('filef').innerHTML='файл загружен'; 
@@ -272,6 +273,12 @@ $(function() {
 
     
     $(document).ready(function() {
+        var summ = 0;
+$(".itm_sum").each(function(){
+summ += parseInt($(this).html(), 10);
+});
+        document.getElementById('totalprise').innerHTML =' '+ summ +' ';
+        
 	/*Main SL*/
   $('.main_sl_box').slick({
   	  autoplay: true,
