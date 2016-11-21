@@ -120,10 +120,10 @@ class ControllerDQuickcheckoutCart extends Controller {
             $data['error_warning'] = sprintf($this->session->data['d_quickcheckout']['general']['min_order']['text'], $this->session->data['d_quickcheckout']['general']['min_order']['value']);
         } 
 
-        if ($this->cart->countProducts() < $this->session->data['d_quickcheckout']['general']['min_quantity']['value']) {
-            $data['error_warning'] = sprintf($this->session->data['d_quickcheckout']['general']['min_quantity']['text'], $this->session->data['d_quickcheckout']['general']['min_quantity']['value']);
+      /*   if ($this->cart->countProducts() < $this->session->data['d_quickcheckout']['general']['min_quantity']['value']) {
+           $data['error_warning'] = sprintf($this->session->data['d_quickcheckout']['general']['min_quantity']['text'], $this->session->data['d_quickcheckout']['general']['min_quantity']['value']);
         }
- 
+ */
         if(VERSION < '2.1.0.1'){
             foreach($this->session->data['cart'] as $key => $value){
                 $this->cart->update($key, $value);

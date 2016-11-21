@@ -26,6 +26,7 @@
 
 
 					<div class="baskr_item_wr  mw clf" style="color: black;">
+					 <% i=0; %>
 					<%  _.each(model.products, function(product) { %>
 					
 					<div class="baskr_item_box mw clf" <%= product.stock ? '' : 'class="stock"' %>>
@@ -68,6 +69,7 @@
 
                                 <div class="itm_sum fl clf" style="color: #2f0000;">
                                     <%= product.total %>
+                                     <% i=i+product.total; %>
                                 </div>
 
                                 <div class="close_box fr clf delete decrease " id="<%= product.id %>" onclick="deletet(this);" >
@@ -79,7 +81,7 @@
 					<% }) %>
 					 </div>
 
-
+<%  model.totals[2]['value']=i;   %> 
               <div class="cont_text fix_p cb mw clf">
                         <!--Fast Order-->
                         <div class="urgently_order fl clf">
@@ -160,7 +162,7 @@
 	</div>
 
 	<div class="split_bskt"></div>
- <% console.log(model); %> 
+
 </script>
 
 <script>
