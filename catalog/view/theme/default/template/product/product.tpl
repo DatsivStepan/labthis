@@ -33,30 +33,48 @@
             <?php } ?>
         </div>
         
-        <div class="text_wr it_w fr clf">
-
+        <div class="text_wr it_w fr clf" id="product">
             <div class="it_price_box mw clf">
+                <input type="hidden" name="product_id" value="<?= $product_id; ?>"/>
                 <?php if ($price) { ?>
-                    <p>
-                      <?php if (!$special) { ?>
-                            <?php echo $price; ?>
-                      <?php } else { ?>
-                            <?php echo $special; ?>
-                      <?php } ?>
+                    <input type="hidden" class="productOldPrice" value="<?= $price; ?>"/>
+                    <p class="productPrice">
+                        <?= $price; ?>
                     </p>
                 <?php } ?>
 
-                <div class="it_size fl clf" id="product">
+                <div class="it_size fl clf" >
                     <span class="itl_text cb clf">Количество:</span>
-                    <div class="namber_box section number-plus-minus fr clf">
-                        <input type="number" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" />
-                        <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+                    <div class="namber_box section number-plus-minus fr clf quantityProductP">
+                        <input type="number" name="quantity" value="<?php echo $minimum; ?>" min="2" size="2" id="input-quantity" data-product_id="" />
                     </div>
                 </div>
               <br />
                 <div class="it_chesk fl clf">
-                    <p class="fl clf">Товар прошел лабораторные испытания</p>
-                    <img class="fr clf" src="/image/catalog/ico/check.jpg" alt="img">
+                    <!--<p class="fl clf">Товар прошел лабораторные испытания</p>
+                    <img class="fr clf" src="/image/catalog/ico/check.jpg" alt="img"> -->
+                    <?php foreach($options as $option){ ?>
+                        <?php if ($option['type'] == 'checkbox') { ?>
+                        <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
+                          <div id="input-option<?php echo $option['product_option_id']; ?>">
+                            <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                            <div class="col-sm-10 fl clf" style="padding:0px;">
+                                <?php echo $option_value['name']; ?>
+                            </div>
+                            <div class="col-sm-2" >
+                                <?php if ($option_value['price']) { ?>
+                                    <input type="hidden" value="<?php echo $option_value['price']; ?>" class="hiddenOprionValue">
+                                <?php } ?>
+                                <div class="styleInputContainer">
+                                    <input type="checkbox" class="checkLabIsput" id="styleInput_<?= $product_id; ?>" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                    <label for="styleInput_<?= $product_id; ?>"></label>
+                                </div>
+                            </div>
+                            <?php } ?>
+                          </div>
+                        </div>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -113,6 +131,43 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 });
 //--></script> 
 <script type="text/javascript"><!--
+    var productPrice = 0;
+    $(document).on('change','.checkLabIsput',function(){
+        var productQuantity = $('.quantityProductP').find('input[name=quantity]').val();
+        var productPrice = parseInt($('.productOldPrice').val());
+        if($('.checkLabIsput').is(':checked')){
+            var OptionValue = parseInt($('.hiddenOprionValue').val());
+            var TotalPrice = (productPrice * productQuantity) + (OptionValue * productQuantity);
+            $('.productPrice').text(TotalPrice+'р.');
+        }else{
+            var TotalPrice = productPrice * productQuantity;
+            $('.productPrice').text(TotalPrice+'р.');
+        }
+        /*if($(this).is(':checked')){
+            var OptionValue = parseInt($(this).parent().find('.hiddenOprionValue').val());
+            productPrice = parseInt($('.productPrice').text());
+            var TotalPrice = OptionValue+productPrice;
+            $('.productPrice').text(TotalPrice+'р.');
+        }else{
+            $('.productPrice').text(productPrice+'р.');
+        } */
+    });
+    
+    $(document).on('click','.quantityProductP .plus, .quantityProductP .minus',function(){
+        var productQuantity = $(this).parent().find('input[name=quantity]').val();
+        var productPrice = parseInt($('.productOldPrice').val());
+        if($('.checkLabIsput').is(':checked')){
+            var OptionValue = parseInt($('.hiddenOprionValue').val());
+            var TotalPrice = (productPrice * productQuantity) + (OptionValue * productQuantity);
+            $('.productPrice').text(TotalPrice+'р.');
+        }else{
+            var TotalPrice = productPrice * productQuantity;
+            $('.productPrice').text(TotalPrice+'р.');
+        }
+        //$('#product_'+product_id).find('.productPriceView').text(TotalPrice+'р.');
+    })
+    
+    
     $(document).on('click','.quickOrder',function(){
         $('#button-cart').trigger('click');
         setTimeout(function(){

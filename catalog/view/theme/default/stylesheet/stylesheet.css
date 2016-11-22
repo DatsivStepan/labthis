@@ -975,3 +975,20 @@ h2.price {
 .categoryContent{
     font-family: 'nsr';
 }
+
+
+.styleInputContainer input[type='checkbox']{
+    display:none;
+}
+
+.styleInputContainer input[type='checkbox'] + label{
+    width:26px;
+    height:26px;
+    background-color: white;
+    border:1px solid #dedddd;
+}
+.styleInputContainer input[type='checkbox']:checked + label{
+    background:url('/image/catalog/ico/check.jpg');
+}
+//.styleInput_
+

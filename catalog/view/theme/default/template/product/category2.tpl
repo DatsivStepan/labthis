@@ -62,37 +62,37 @@
     <br/>-->
     <?php if (!$categories && !$products) { ?>
 
-    <div class="cont_box bw clf">
-        <div class="back_box_wr mw clf">
-            <input type="hidden" value="<?=$base_url; ?>">
-            <div class="box_filtr fl clf">
-                <p class="fl">Сортировать по:</p>
+        <div class="cont_box bw clf">
+            <div class="back_box_wr mw clf">
+                <input type="hidden" value="<?=$base_url; ?>">
+                <div class="box_filtr fl clf">
+                    <p class="fl">Сортировать по:</p>
 
-                <?php $i=0; foreach ($sorts as $sorts) { ?>
-                <?php if ($sorts['value'] == $sort . '-' . $order && $order == 'DESC') { ?>
-                <!--<option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>-->
-                    <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
-                <?php } elseif($sorts['value'] == $sort . '-' . $order && $order == 'ASC') { ?>
-                <!--<option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>-->
-                    <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
-                <?php } ?>
-                <?php if(isset($order) && empty($order) && $i == 1){ ?>
-                    <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
-                <?php } $i++; ?>
-                <?php } ?>
+                    <?php $i=0; foreach ($sorts as $sorts) { ?>
+                    <?php if ($sorts['value'] == $sort . '-' . $order && $order == 'DESC') { ?>
+                    <!--<option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>-->
+                        <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+                    <?php } elseif($sorts['value'] == $sort . '-' . $order && $order == 'ASC') { ?>
+                    <!--<option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>-->
+                        <a class="fl asc" href="<?php echo $sorts['href']; ?>">популярности</a>
+                    <?php } ?>
+                    <?php if(isset($order) && empty($order) && $i == 1){ ?>
+                        <a class="fl" href="<?php echo $sorts['href']; ?>">популярности</a>
+                    <?php } $i++; ?>
+                    <?php } ?>
 
-            </div>
+                </div>
 
-            <div class="range_sl_box fr clf">
-                <p class="fl clf">Цена, руб.</p>
-                <div class="range_box fl clf">
-                    <span id="min_price" class="fl clf"></span>
-                    <span id="max_price" class="fr clf"></span>
-                    <div id="slider-range"></div>
+                <div class="range_sl_box fr clf">
+                    <p class="fl clf">Цена, руб.</p>
+                    <div class="range_box fl clf">
+                        <span id="min_price" class="fl clf"></span>
+                        <span id="max_price" class="fr clf"></span>
+                        <div id="slider-range"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php } ?>
     <?php if ($products) { ?>
 
@@ -130,75 +130,98 @@
 
     <div class="cont_box bw clf">
         <?php if (count($products) <= 5) { ?>
-        <div class="item_list_box fix_m mw clf">
-            <?php foreach ($products as $product) { ?>
-            <!--Product Item-->
-            <div class="product_item bshd clf">
-                <div class="img_box mw clf">
-                    <a href="<?=$product['href'];?>">
-                        <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
-                    </a>
-                </div>
-                <div class="it_text_box">
-                    <p class="it_name fl clf"><?=$product['name']; ?></p>
-                    <p class="it_articul fl clf"><?=$product['model']; ?></p>
-                </div>
-                <span class="it_split mw clf"></span>
-
-                <div class="it_price_box mw clf">
-                    <span class="it_price fl clf">360 руб.</span>
-
-                    <div class="namber_box section number-plus-minus fr clf" id="product_<?=$product['product_id']; ?>">
-                        <input type="number" value="1" min="1" step="1"/>
+            <div class="item_list_box fix_m mw clf">
+                <?php foreach ($products as $product) { ?>
+                <!--Product Item-->
+                <div class="product_item bshd clf" id="product_<?=$product['product_id']; ?>">
+                    <div class="img_box mw clf">
+                        <a href="<?=$product['href'];?>">
+                            <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
+                        </a>
                     </div>
+                    <div class="it_text_box">
+                        <p class="it_name fl clf"><?=$product['name']; ?></p>
+                        <p class="it_articul fl clf"><?=$product['model']; ?></p>
+                    </div>
+                    <span class="it_split mw clf"></span>
+
+                    <div class="it_price_box mw clf">
+                        <input type="hidden" class="productOldPrice" value="<?= $product['price']; ?>"/>
+                        <span class="it_price fl clf productPriceView">
+                            <?= $product['price']; ?>
+                        </span>
+                        <!--id="product_<?=$product['product_id']; ?>" -->
+                        <div class="namber_box section number-plus-minus fr clf quantityContainer" data-product_id="<?php echo $product_id; ?>">
+                            <input type="hidden" name="product_id" value="<?=$product['product_id']; ?>"/>
+                            <input type="number" name="quantity" value="1" min="1" step="1" data-product_id="<?php echo $product['product_id']; ?>"/>
+                        </div>
+                    </div>
+
+                    <div class="it_info_box mw clf product_option_<?=$product['product_id']; ?>">
+                        <?php foreach($product['options'] as $option){ ?>
+                            <?php if ($option['type'] == 'checkbox') { ?>
+                            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
+                              <div id="input-option<?php echo $option['product_option_id']; ?>">
+                                <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                    <div class="col-sm-10 fl clf" style="padding:0px;">
+                                        <?php echo $option_value['name']; ?>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <?php if ($option_value['price']) { ?>
+                                            <input type="hidden" value="<?php echo $option_value['price']; ?>" class="hiddenOprionValue">
+                                        <?php } ?>
+                                        <div class="styleInputContainer">
+                                            <input type="checkbox" class="checkLabIsputC" id="styleInput_<?=$product['product_id']; ?>"   data-product_id="<?=$product['product_id']; ?>" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                            <label for="styleInput_<?=$product['product_id']; ?>"></label>
+                                        </div>
+                                    </div>
+
+                                <?php } ?>
+                              </div>
+                            </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+
+                    <a class="bay_btn hb mw clf" style="cursor:pointer;"  onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
                 </div>
-
-
-                <div class="it_info_box mw clf">
-                    <p>Товар прошел лабораторные испытания</p>
-                    <img src="./image/catalog/ico/check.jpg" alt="img">
-                </div>
-
-                <a class="bay_btn hb mw clf" style="cursor:pointer;"  onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+                <?php } ?>
             </div>
-            <?php } ?>
-        </div>
         <?php } else { ?>
-        <?php foreach (array_chunk($products, ceil(count($products) / 4)) as $products) { ?>
-        <div class="item_list_box fix_m mw clf">
-            <?php foreach ($products as $product) { ?>
-            <!--Product Item-->
-            <div class="product_item bshd clf">
-                <div class="img_box mw clf">
-                    <a href="<?=$product['href'];?>">
-                        <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
-                    </a>
-                </div>
-                <div class="it_text_box">
-                    <p class="it_name fl clf"><?=$product['name']; ?></p>
-                    <p class="it_articul fl clf"><?=$product['model']; ?></p>
-                </div>
-                <span class="it_split mw clf"></span>
-
-                <div class="it_price_box mw clf">
-                    <span class="it_price fl clf">360 руб.</span>
-
-                    <div class="namber_box section number-plus-minus fr clf">
-                        <input type="number" value="1" min="1" step="1"/>
+            <?php foreach (array_chunk($products, ceil(count($products) / 4)) as $products) { ?>
+            <div class="item_list_box fix_m mw clf">
+                <?php foreach ($products as $product) { ?>
+                <!--Product Item-->
+                <div class="product_item bshd clf">
+                    <div class="img_box mw clf">
+                        <a href="<?=$product['href'];?>">
+                            <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
+                        </a>
                     </div>
+                    <div class="it_text_box">
+                        <p class="it_name fl clf"><?=$product['name']; ?></p>
+                        <p class="it_articul fl clf"><?=$product['model']; ?></p>
+                    </div>
+                    <span class="it_split mw clf"></span>
+
+                    <div class="it_price_box mw clf">
+                        <span class="it_price fl clf"><?=$product['price']; ?></span>
+
+                        <div class="namber_box section number-plus-minus fr clf">
+                            <input type="number" value="1" min="1" step="1"/>
+                        </div>
+                    </div>
+
+                    <div class="it_info_box mw clf">
+                        <p>Товар прошел лабораторные испытания</p>
+                        <img src="./image/catalog/ico/check.jpg" alt="img">
+                    </div>
+
+                    <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
                 </div>
-
-
-                <div class="it_info_box mw clf">
-                    <p>Товар прошел лабораторные испытания</p>
-                    <img src="./image/catalog/ico/check.jpg" alt="img">
-                </div>
-
-                <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+                <?php } ?>
             </div>
             <?php } ?>
-        </div>
-        <?php } ?>
         <?php } ?>
 
     </div>

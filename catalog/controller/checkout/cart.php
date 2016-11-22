@@ -280,8 +280,8 @@ class ControllerCheckoutCart extends Controller {
 		$this->load->language('checkout/cart');
 
 		$json = array();
-
-		if (isset($this->request->post['product_id'])) {
+                //var_dump($this->request->post);exit;
+                if (isset($this->request->post['product_id'])) {
 			$product_id = (int)$this->request->post['product_id'];
 		} else {
 			$product_id = 0;
