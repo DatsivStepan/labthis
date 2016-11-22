@@ -62,6 +62,7 @@
             <?php foreach ($products as $product) { ?>
             <div class="itl_box bshd mw clf">
                 <ul class="clf" id="product_<?=$product['product_id'];?>">
+                    <input type="hidden" name="product_id" value="<?=$product['product_id'];?>">
                     <li class="itl_name clf"  data-toggle="modal" data-target="#productDescription<?=$product['product_id'];?>"><?php echo $product['name']; ?></li>
                     
                     <div id="productDescription<?=$product['product_id'];?>" class="modal fade" role="dialog">
@@ -84,7 +85,7 @@
                     <li class="itl_size clf">
                         <span class="itl_text cb clf">Количество:</span>
                         <div class="namber_box section number-plus-minus fr clf">
-                            <input type="number" value="1"  min="1" step="1" />
+                            <input type="number" name="quantity" value="1"  min="1" step="1" />
                         </div>
                     </li>
                     <li class="itl_price clf">
