@@ -256,9 +256,42 @@ class ControllerProductCategory extends Controller {
 					$rating = false;
 				}
 
+                                $options = array();
+
+                                foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
+                                        $product_option_value_data = array();
+
+                                        foreach ($option['product_option_value'] as $option_value) {
+                                                if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+                                                        if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+                                                            $option_price = $this->currency->format($this->tax->calculate($option_value['price'], 0, $this->config->get('config_tax') ? 'P' : false));
+                                                        } else {
+                                                            $option_price = false;
+                                                        }
+                                                        $product_option_value_data[] = array(
+                                                                'product_option_value_id' => $option_value['product_option_value_id'],
+                                                                'option_value_id'         => $option_value['option_value_id'],
+                                                                'name'                    => $option_value['name'],
+                                                                'price'                   => $option_price,
+                                                                'price_prefix'            => $option_value['price_prefix']
+                                                        );
+                                                }
+                                        }
+
+                                        $options[] = array(
+                                                'product_option_id'    => $option['product_option_id'],
+                                                'product_option_value' => $product_option_value_data,
+                                                'option_id'            => $option['option_id'],
+                                                'name'                 => $option['name'],
+                                                'type'                 => $option['type'],
+                                                'value'                => $option['value'],
+                                                'required'             => $option['required']
+                                        );
+                                }
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'options'        => $options,
 					'name'        => $result['name'],
 					'model'        => $result['model'],
 					'description' => html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'),
@@ -268,10 +301,9 @@ class ControllerProductCategory extends Controller {
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
+                                
 			}
-
 			$url = '';
-
 			if (isset($this->request->get['filter'])) {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}
