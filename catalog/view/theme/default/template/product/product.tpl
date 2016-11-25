@@ -58,7 +58,7 @@
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
                           <div id="input-option<?php echo $option['product_option_id']; ?>">
                             <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                            <div class="col-sm-10 fl clf" style="padding:0px;">
+                            <div class="col-sm-10 fl clf" style="font: 14px 'nsr';padding:0px;">
                                 <?php echo $option_value['name']; ?>
                             </div>
                             <div class="col-sm-2" >
