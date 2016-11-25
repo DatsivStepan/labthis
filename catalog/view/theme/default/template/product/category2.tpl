@@ -163,7 +163,7 @@
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
                               <div id="input-option<?php echo $option['product_option_id']; ?>">
                                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                    <div class="col-sm-10 fl clf" style="padding:0px;">
+                                    <div class="col-sm-10" style="font: 13px 'nsr';padding:0px;">
                                         <?php echo $option_value['name']; ?>
                                     </div>
                                     <div class="col-sm-2" >
@@ -192,7 +192,7 @@
             <div class="item_list_box fix_m mw clf">
                 <?php foreach ($products as $product) { ?>
                 <!--Product Item-->
-                <div class="product_item bshd clf">
+                <div class="product_item bshd clf" id="product_<?=$product['product_id']; ?>">
                     <div class="img_box mw clf">
                         <a href="<?=$product['href'];?>">
                             <img src="<?=$product['thumb']; ?>" alt="<?=$product['name']; ?>">
@@ -205,19 +205,44 @@
                     <span class="it_split mw clf"></span>
 
                     <div class="it_price_box mw clf">
-                        <span class="it_price fl clf"><?=$product['price']; ?></span>
-
-                        <div class="namber_box section number-plus-minus fr clf">
-                            <input type="number" value="1" min="1" step="1"/>
+                        <input type="hidden" class="productOldPrice" value="<?= $product['price']; ?>"/>
+                        <span class="it_price fl clf productPriceView">
+                            <?= $product['price']; ?>
+                        </span>
+                        <!--id="product_<?=$product['product_id']; ?>" -->
+                        <div class="namber_box section number-plus-minus fr clf quantityContainer" data-product_id="<?php echo $product_id; ?>">
+                            <input type="hidden" name="product_id" value="<?=$product['product_id']; ?>"/>
+                            <input type="number" name="quantity" value="1" min="1" step="1" data-product_id="<?php echo $product['product_id']; ?>"/>
                         </div>
                     </div>
 
-                    <div class="it_info_box mw clf">
-                        <p>Товар прошел лабораторные испытания</p>
-                        <img src="./image/catalog/ico/check.jpg" alt="img">
+                    <div class="it_info_box mw clf product_option_<?=$product['product_id']; ?>">
+                        <?php foreach($product['options'] as $option){ ?>
+                            <?php if ($option['type'] == 'checkbox') { ?>
+                            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
+                              <div id="input-option<?php echo $option['product_option_id']; ?>">
+                                <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                    <div class="col-sm-10" style="font: 14px 'nsr';padding:0px;">
+                                        <?php echo $option_value['name']; ?>
+                                    </div>
+                                    <div class="col-sm-2" >
+                                        <?php if ($option_value['price']) { ?>
+                                            <input type="hidden" value="<?php echo $option_value['price']; ?>" class="hiddenOprionValue">
+                                        <?php } ?>
+                                        <div class="styleInputContainer">
+                                            <input type="checkbox" class="checkLabIsputC" id="styleInput_<?=$product['product_id']; ?>"   data-product_id="<?=$product['product_id']; ?>" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                            <label for="styleInput_<?=$product['product_id']; ?>"></label>
+                                        </div>
+                                    </div>
+
+                                <?php } ?>
+                              </div>
+                            </div>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
 
-                    <a class="bay_btn hb mw clf" onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
+                    <a class="bay_btn hb mw clf" style="cursor:pointer;"  onclick="cart_category.add(<?=$product['product_id'];?>)">В корзину</a>
                 </div>
                 <?php } ?>
             </div>
