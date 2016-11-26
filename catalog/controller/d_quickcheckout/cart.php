@@ -162,6 +162,11 @@ class ControllerDQuickcheckoutCart extends Controller {
 
             $option_data = array();
 
+		$this->load->model('catalog/category');
+
+		$this->load->model('catalog/product');
+
+            
             foreach ($product['option'] as $option) {
                 if ($option['type'] != 'file') {
                     $value = $option['value'];
@@ -225,12 +230,14 @@ class ControllerDQuickcheckoutCart extends Controller {
            }else{
                $i=1; 
             }
-
+            $categoryArrayId = $this->model_catalog_product->getCategories($product['product_id']);
+//            var_dump($categoryArrayId[0]['category_id']);exit;
             $json['products'][] = array(
                 'key'       => (isset($product['cart_id'])) ? $product['cart_id'] : $product['key'],
                 'image'     => $image,
                 'thumb'     => $image,
                 'name'      => $product['name'],
+                'p_category_id'       => $categoryArrayId[0]['category_id'],
                 'id'        => $product['product_id'],
                 'model'     => $product['model'],
                 'option'    => $option_data,

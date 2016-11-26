@@ -29,22 +29,37 @@
 					 <% i=0; %>
 					<%  _.each(model.products, function(product) { %>
 					
-					<div class="baskr_item_box mw clf" <%= product.stock ? '' : 'class="stock"' %>>
+					<div class="baskr_item_box mw clf" <%= product.stock ? '' : 'class="stock"' %> style="position:relative;">
 
+                                    <%  _.each(product.option, function(option) { %>
+                                        <img src="../../../image/catalog/mag/bask2.jpg" style="position: absolute;right: 19px;top: 17px;width: 35px;height: 30px;" title="<%= option.name %>">
+                                    <% }) %>
 
 
                                 <div class="itm_img fl clf">
+                                    <% if(product.p_category_id == '59'){ %>
+                                    <a>
+                                    <% }else{ %>
                                     <a href="<%= product.href %>">
-                                        <img src="<%= product.thumb %>" alt="img" style="width: 55%;">
+                                    <% } %>
+                                        <% if(product.thumb != ''){ %>
+                                            <img src="<%= product.thumb %>" alt="img" style="width: 55%;">
+                                        <% }else{ %>
+                                            <img src="../../../image/catalog/mag/bask2.jpg" alt="img" style="width: 55%;">
+                                        <% } %>
                                     </a>
                                 </div>
 
                                 <div class="itm_name fl clf">
+                                    <% if(product.p_category_id == '59'){ %>
+                                    <a>
+                                    <% }else{ %>
                                     <a href="<%= product.href %>">
+                                    <% } %>
                                     <%= product.name %>
                                     </a>
                                 </div>
-
+                                
                                 <div class="itm_price fl clf" style="color: #2f0000;">
                                      <%= product.price %>
                                 </div>
@@ -73,6 +88,11 @@
                                 </div>
 
                                 <div class="close_box fr clf delete decrease " id="<%= product.id %>" onclick="deletet(this);" >
+                                </div>
+                                <div class="col-sm-12" style="padding-top:8px;font: 14px 'nsr';">
+                                    <%  _.each(product.option, function(option) { %>
+                                        <%= option.name %>
+                                    <% }) %>
                                 </div>
                             </div>
 
