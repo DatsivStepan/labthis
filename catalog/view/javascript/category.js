@@ -1,8 +1,9 @@
 var cart_category = {
     'add': function(product_id) {
         var quantity = $("#product_"+product_id +" .jq-number__field input").val();
-        var productOption = $('.product_option_'+product_id+' input[type=\'checkbox\']:checked')
-        console.log(productOption)
+        var productOption = $('.product_option_'+product_id+' input[type=\'checkbox\']:checked');        
+        console.log(productOption);
+        
         $.ajax({
             url: 'index.php?route=checkout/cart/add',
             type: 'post',
@@ -46,7 +47,8 @@ $(document).on('change','.checkLabIsputC',function(){
     }else{
         var productPrice = parseInt($('#product_'+product_id).find('.productOldPrice').val());
         var productQuantity = parseInt($('#product_'+product_id).find('input[name=quantity]').val());
-        $('#product_'+product_id).find('.productPriceView').text(productPrice * productQuantity);
+        var TotalPrice = productPrice * productQuantity;
+        $('#product_'+product_id).find('.productPriceView').text(TotalPrice+'p.');
     }
 });
 
@@ -68,7 +70,8 @@ $(document).on('click','.quantityContainer .plus, .quantityContainer .minus',fun
     }else{
         var productPrice = parseInt($('#product_'+product_id).find('.productOldPrice').val());
         var productQuantity = parseInt($('#product_'+product_id).find('input[name=quantity]').val());
-        $('#product_'+product_id).find('.productPriceView').text(productPrice * productQuantity);
+        var TotalPrice = productPrice * productQuantity;
+        $('#product_'+product_id).find('.productPriceView').text(TotalPrice+'р.');
     }
     //$('#product_'+product_id).find('.productPriceView').text(TotalPrice+'р.');
 })
