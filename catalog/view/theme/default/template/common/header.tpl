@@ -3,11 +3,12 @@
 <!--[if IE 8 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie8"><![endif]-->
 <!--[if IE 9 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" style="min-width:1200px;">
 <!--<![endif]-->
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=1200px, maximum-scale=1.0, user-scalable=yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
 <?php if ($description) { ?>
@@ -101,6 +102,28 @@
         </div>
     </div>
 </div>
+<div id="question_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #002b4c;margin-top:200px;">
+        <div class="modal-header" style="padding: 0px;border: 0px;">
+            <button type="button" class="close" data-dismiss="modal" style="color:white;font-size: 34px;margin-right: 4px;">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="col-sm-6 col-xs-6">
+                <a  href="../../../../index.php?route=checkout/checkout" class="button_class22">Оформить заказ</a>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <button type="button"  class="button_class2" data-dismiss="modal">Продолжить покупку</button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+
+  </div>
+</div>
+    
 <!--<nav id="top">
   <div class="container">
     <?php echo $currency; ?>

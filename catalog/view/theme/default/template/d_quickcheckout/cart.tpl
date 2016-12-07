@@ -105,14 +105,16 @@
               <div class="cont_text fix_p cb mw clf">
                         <!--Fast Order-->
                         <div class="urgently_order fl clf">
-                            <p class="fl clf">Срочный заказ на испытания</p>
-                            <?php if($_SESSION['totalsx2']==0){ ?>
-                            <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
-                             <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;">
-                            <?php } if($_SESSION['totalsx2']==1){ ?>
-                            <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf checked" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
-                             <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;" checked>
-                            <?php } ?>
+                            <p class="fl clf">Если ваш заказ срочный (24 часа) уточняйте цену на испытания у менеджера</p>
+                            <div class="row" style="display:none;">
+                                <?php if($_SESSION['totalsx2']==0){ ?>
+                                <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
+                                 <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;">
+                                <?php } if($_SESSION['totalsx2']==1){ ?>
+                                <div onclick="zakx2Function()" id="checklass" class="jq-checkbox cast_check fl clf checked" unselectable="on" style="-webkit-user-select: none; display: inline-block; position: relative; overflow: hidden;">
+                                 <input  id="zakx2" name="confirm.agree" class="" type="checkbox"  value="1" style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;" checked>
+                                <?php } ?>
+                            </div>
                            
                             </div>
                         </div>

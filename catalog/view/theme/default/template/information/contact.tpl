@@ -78,7 +78,7 @@
                         <div class="form-group required">
                           <label class="col-sm-12 control-label" for="input-telefon" style="font: 13px 'nsr';padding-top:5px;padding-bottom:5px;color:white;text-align: left">Телефон</label>
                           <div class="col-sm-12">
-                            <input type="text" name="telefon"  class="formContactClass" id="input-email"/>
+                            <input type="text" name="telefon"  class="formContactClass" id="input-telefon"/>
                             <!--<?php if ($error_email) { ?>
                             <div class="text-danger"><?php echo $error_email; ?></div>
                             <?php } ?>-->
