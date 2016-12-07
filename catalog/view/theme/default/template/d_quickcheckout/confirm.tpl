@@ -256,7 +256,7 @@
 		}).fail(function(data) {
                console.log(data);
 				}).done(function(data) {
-				window.location = "index.php?route=checkout/success";
+                                    window.location = "index.php?route=checkout/success";
 				});
     
      }

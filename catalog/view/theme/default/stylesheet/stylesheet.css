@@ -990,5 +990,39 @@ h2.price {
 .styleInputContainer input[type='checkbox']:checked + label{
     background:url('/image/catalog/ico/check.jpg');
 }
-//.styleInput_
+
+
+.button_class22{
+    font: 14px 'nsb';
+    color: #fff !important;
+    text-decoration: none;
+    padding: 12px 0;
+    text-align: center;
+    cursor:pointer;
+    border: 0px;
+    width:100%;
+    display:block;
+    background-color: #0072b6;
+}
+
+
+
+.button_class2{    
+    font: 14px 'nsb';
+    color: #0072b6;
+    text-decoration: none;
+    padding: 12px 0;
+    text-align: center;
+    cursor:pointer;
+    border: 0px;
+    width:100%;
+    display:block;
+    background-color: white;
+}
+.button_class2:hover{
+    background-color: #0072b6;
+    border:0px;
+    color:white;
+    
+}
 

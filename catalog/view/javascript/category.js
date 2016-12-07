@@ -19,16 +19,16 @@ var cart_category = {
                 $('#cart > button').button('reset');
 
                 if (json['redirect']) {
-                    alert('dvd');
-                    //location = json['redirect'];
+                    //alert('dvd');
+                    location = json['redirect'];
                 }
 
                 if (json['success']) {
                     $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
                     console.log(json);
                     $('#cart-total').html(json['total']);
-
-                    $('html, body').animate({ scrollTop: 0 }, 'slow');
+                    $('#question_modal').modal('show');
+                    //$('html, body').animate({ scrollTop: 0 }, 'slow');
                 }
             }
         });

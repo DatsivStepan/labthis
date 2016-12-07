@@ -880,7 +880,7 @@ body {
 
 .fib_box_rt {
     width: 324px;
-    height: 239px;
+    height: 274px;
     border: 1px dashed #9b9c9d;
     border-radius: 5px;
     margin: 74px 81px 0 0;
@@ -1669,7 +1669,7 @@ body {
     padding: 11px 0 12px 23px;
     margin: 2px 0 0 0;
     font: 13px 'nsr';
-    color: #a09a9a;
+    //color: #a09a9a;
     box-sizing: border-box;
     resize: none;
 }
