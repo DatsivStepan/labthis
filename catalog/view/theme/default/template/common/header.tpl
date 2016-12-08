@@ -39,12 +39,14 @@
 <!--<link href="catalog/view/theme/default/stylesheet/nouislider.min.css" rel="stylesheet">-->
 <link href="catalog/view/theme/default/stylesheet/jquery.formstyler.css" rel="stylesheet">
 <link href="catalog/view/theme/default/fonts/fonts.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/jquery.fancybox.css" rel="stylesheet">
 
 <script src="catalog/view/javascript/slick.js" type="text/javascript"></script>
 <!--<script src="catalog/view/javascript/nouislider.js" type="text/javascript"></script>-->
 <script src="catalog/view/javascript/wNumb.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/jquery.formstyler.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/script.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
