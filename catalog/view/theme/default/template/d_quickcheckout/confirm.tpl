@@ -6,7 +6,7 @@
 -->
 <div id="confirm_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>"></div>
 
-		<div class="panel-body cont_text fix_p fl mw clf" style="margin-left: 75px;">
+		<div class="panel-body cont_text fix_p mw clf"  style="margin:0 auto !important;float:none;">
 					<form name="form" class="form-horizontal" novalidate="novalidate" style="color: black;">
 
 <p class="baskt_art">ОФОРМЛЕНИЕ ЗАКАЗА</p>

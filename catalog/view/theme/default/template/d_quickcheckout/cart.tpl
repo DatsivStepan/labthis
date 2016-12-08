@@ -14,7 +14,7 @@
 		</div>
 -->
     
-		<div class="cont_text fix_p cb mw clf" >
+		<div class="cont_text fix_p cb mw clf"  style="margin:0 auto !important;float:none;">
 
         <p class="baskt_art">ВАШ ЗАКАЗ</p>
     <div class="it_section_name bw clf">

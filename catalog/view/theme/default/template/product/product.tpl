@@ -21,7 +21,11 @@
             <?php if ($images) { ?>
                 <ul class="item_sl clf">
                     <?php foreach ($images as $image) { ?>
-                        <li><img src="<?php echo $image['thumb']; ?>" alt="img"></li>
+                        <li>
+                            <a class="fancybox" rel="gallery1" href="<?php echo $image['thumb']; ?>">
+                                <img src="<?php echo $image['thumb']; ?>" alt="img">
+                            </a>
+                        </li>
                     <?php } ?>
                 </ul>
 

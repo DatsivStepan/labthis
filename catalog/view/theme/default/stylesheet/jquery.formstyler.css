@@ -144,7 +144,7 @@
 	border: none;
 	outline: none;
 	background: none;
-	font: 14px Arial, sans-serif!important;
+	font: 14px Arial, sans-serif;
 	color: #333;
 	text-align: left; /* для Opera Presto */
 	-moz-appearance: textfield;
