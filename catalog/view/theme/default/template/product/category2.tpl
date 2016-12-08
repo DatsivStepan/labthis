@@ -157,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div class="it_info_box mw clf product_option_<?=$product['product_id']; ?>">
+                    <div class="it_info_box mw clf product_option_<?=$product['product_id']; ?>" style="min-height: 38px">
                         <?php foreach($product['options'] as $option){ ?>
                             <?php if ($option['type'] == 'checkbox') { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -216,7 +216,7 @@
                         </div>
                     </div>
 
-                    <div class="it_info_box mw clf product_option_<?=$product['product_id']; ?>">
+                    <div class="it_info_box mw clf product_option_<?=$product['product_id']; ?>" style="min-height:38px;">
                         <?php foreach($product['options'] as $option){ ?>
                             <?php if ($option['type'] == 'checkbox') { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">

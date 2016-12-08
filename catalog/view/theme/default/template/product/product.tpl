@@ -50,10 +50,10 @@
                 <div class="it_size fl clf" >
                     <span class="itl_text cb clf">Количество:</span>
                     <div class="namber_box section number-plus-minus fr clf quantityProductP">
-                        <input type="number" name="quantity" value="<?php echo $minimum; ?>" min="2" size="2" id="input-quantity" data-product_id="" />
+                        <input type="number" name="quantity" value="<?php echo $minimum; ?>" min="1" size="2" id="input-quantity" data-product_id="" />
                     </div>
                 </div>
-              <br />
+                <br />
                 <div class="it_chesk fl clf">
                     <!--<p class="fl clf">Товар прошел лабораторные испытания</p>
                     <img class="fr clf" src="/image/catalog/ico/check.jpg" alt="img"> -->
