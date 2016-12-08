@@ -2,39 +2,42 @@
 
         <?php echo $content_top; ?>
             <div class="advantages_box_wr mw clf">
-                <div class="advantages_box bw clf">
-                    <ul class="clf">
-                        <li>
-                            <img src="/image/catalog/ico/adv_ico_1.png" alt="img">
-                            <p>Выгодные условия сотрудничества</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/ico/adv_ico_2.png" alt="img">
-                            <p>При покупке в нашем магазине вы защищены от брака на 100%!</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/ico/adv_ico_3.png" alt="img">
-                            <p>Индивидуальные условия для государственных учреждений</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/ico/adv_ico_4.png" alt="img">
-                            <p>Специалисты с большим опытом работы в электротехнической лаборатории</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/ico/adv_ico_5.png" alt="img">
-                            <p>Сертифицированное качество</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/ico/adv_ico_6.png" alt="img">
-                            <p>Предоставление</br> комплексных видов</br> услуг</p>
-                        </li>
-                    </ul>
+                <div class="advantages_box bw clf" style="padding-left:0px;">
+                    <div style="display:inline-block;margin:0 auto;">
+                        <ul class="clf">
+                            <li>
+                                <img src="/image/catalog/ico/adv_ico_1.png" alt="img">
+                                <p>Выгодные условия сотрудничества</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/ico/adv_ico_2.png" alt="img">
+                                <p>При покупке в нашем магазине вы защищены от брака на 100%!</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/ico/adv_ico_3.png" alt="img">
+                                <p>Индивидуальные условия для государственных учреждений</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/ico/adv_ico_4.png" alt="img">
+                                <p>Специалисты с большим опытом работы в электротехнической лаборатории</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/ico/adv_ico_5.png" alt="img">
+                                <p>Сертифицированное качество</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/ico/adv_ico_6.png" alt="img">
+                                <p>Предоставление</br> комплексных видов</br> услуг</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <!--Section Box Wrap-->
             <div class="section_box_wr mw">
                 <div class="section_box bw clf">
+                    <div style="display:inline-block;margin-left:16px;">
                     <ul class="clf">
                         <?php foreach($categories_menu as $key => $category){ ?>
                                 <?php if($category['category_id'] != 60){ ?>
@@ -48,6 +51,7 @@
                                 <?php } ?>
                         <?php } ?>
                     </ul>
+                    </div>
                 </div>
             </div>
 
@@ -95,30 +99,32 @@
                 <div class="scheme_box bw clf">
                     <p class="cheme_art clf">СХЕМА НАШЕЙ РАБОТЫ</p>
                     <ul class="clf">
-                        <li>
-                            <img src="/image/catalog/schem_1.png" alt="img">
-                            <p>Оформляете он-лайн заказ на сайте или отправляете заявку на почту</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/schem_2.png" alt="img">
-                            <p>В ответ на заявку вам перезвонит менеджер и уточнит детали заявки</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/schem_3.png" alt="img">
-                            <p>Мы выставим вам счет и оформим договор</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/schem_4.png" alt="img">
-                            <p>Производится доставка средств защиты для испытаний вы получаете пакет документов</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/schem_5.png" alt="img">
-                            <p>В течении 5 дней производится испытание</br> СИЗ</p>
-                        </li>
-                        <li>
-                            <img src="/image/catalog/schem_6.png" alt="img">
-                            <p>Получаете заказ и все необходимые документы</p>
-                        </li>
+                        <div style="margin:0 auto;display:inline-block;">
+                            <li>
+                                <img src="/image/catalog/schem_1.png" alt="img">
+                                <p>Оформляете он-лайн заказ на сайте или отправляете заявку на почту</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/schem_2.png" alt="img">
+                                <p>В ответ на заявку вам перезвонит менеджер и уточнит детали заявки</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/schem_3.png" alt="img">
+                                <p>Мы выставим вам счет и оформим договор</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/schem_4.png" alt="img">
+                                <p>Производится доставка средств защиты для испытаний вы получаете пакет документов</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/schem_5.png" alt="img">
+                                <p>В течении 5 дней производится испытание</br> СИЗ</p>
+                            </li>
+                            <li>
+                                <img src="/image/catalog/schem_6.png" alt="img">
+                                <p>Получаете заказ и все необходимые документы</p>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
