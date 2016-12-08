@@ -5,8 +5,8 @@
 	d_quickcheckout/confirm.tpl 
 -->
 <div id="confirm_view" class="qc-step" data-col="<?php echo $col; ?>" data-row="<?php echo $row; ?>"></div>
-<script type="text/html" id="confirm_template">
-		<div class="panel-body cont_text fix_p fl mw clf">
+
+		<div class="panel-body cont_text fix_p fl mw clf" style="margin-left: 75px;">
 					<form name="form" class="form-horizontal" novalidate="novalidate" style="color: black;">
 
 <p class="baskt_art">ОФОРМЛЕНИЕ ЗАКАЗА</p>
@@ -66,12 +66,12 @@
      <h4>Способ доставки:</h4>
   
       <div class="form_box fl clf">
-                                    <button id="divone" onclick="divactiveone()" class="delivery_btn hb fl clf">
+                                    <div id="divone" onclick="divactiveone()" class="delivery_btn hb fl clf">
                                         <span>Доставка</span>
-                                    </button>
-                                    <button id="divtoo" class="pickup_btn hb fr clf" onclick="divactivetoo()">
+                                    </div>
+                                    <div id="divtoo" class="pickup_btn hb fr clf" onclick="divactivetoo()">
                                         <span>самовывоз</span>
-                                    </button> 
+                                    </div> 
                                     <input type="text" name="sposdost" id="sposdost" value="САМОВЫВОЗ" class="hidden"> 
                                     
                                     </div>     
@@ -156,7 +156,7 @@
             
 
 
-</script>
+
 <script>
 
     function fileup(){
