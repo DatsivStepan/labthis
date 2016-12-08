@@ -1819,11 +1819,12 @@ body {
 }
 .delivery_btn span,
 .pickup_btn span {
+    text-align: center;
 	font: 14px 'nsb';
 	color: #000;
 	text-transform: uppercase;
 	position: relative;
-	top: 41px;
+	top: 117px;
     display: block;
 }
 .delivery_btn:hover span,
@@ -2085,6 +2086,7 @@ body {
 	background-position: 0 -24px;	
 }
 .cont_text.fix_p {
+    width: 1200px;
 	margin-top: 25px;
 }
 
