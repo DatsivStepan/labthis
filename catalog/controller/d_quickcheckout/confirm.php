@@ -358,7 +358,8 @@ class ControllerDQuickcheckoutConfirm extends Controller {
     }
     
     public function updateOrderAll(){
-               $order_data = array();
+        
+        $order_data = array();
 
         $this->load->model('d_quickcheckout/order');
         $this->model_d_quickcheckout_order->getTotals($order_data['totals'], $total, $taxes);
@@ -614,6 +615,44 @@ class ControllerDQuickcheckoutConfirm extends Controller {
             $status = false;
         }
        
+        /* mail send */
+        
+        	// Admin Alert Mail
+				
+				
+					// Text
+				   $to = $this->config->get('config_email');
+                   $subject = 'Заказ';
+                   $message = '
+                <html>
+                    <head>
+                        <title>Заказ </title>
+                    </head>
+                    <body>
+                        <p><b>вы получили новый заказ</b> </p> 
+                    </body>
+                </html>'; 
+                 $headers  = "Content-type: text/html; charset=utf-8 \r\n"; 
+                 $headers .= "From: Отправитель  ".$this->config->get('config_email')."\r\n"; 
+        mail($to, $subject, $message, $headers); 
+/*
+					$mail = new Mail($this->config->get('config_mail'));
+					$mail->setTo($this->config->get('config_email'));
+					$mail->setFrom($this->config->get('config_email'));
+					$mail->setSender($this->config->get('config_email'));
+					$mail->setSubject('Заказ');
+					$mail->setHtml('');
+					$mail->setText(html_entity_decode('', ENT_QUOTES, 'UTF-8'));
+				
+					$mail->send();
+				*/
+        
+        /* end mail */
+        
+        
+        
+        
+        
         
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($status));     
