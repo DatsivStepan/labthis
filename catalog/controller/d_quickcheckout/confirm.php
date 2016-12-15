@@ -358,7 +358,8 @@ class ControllerDQuickcheckoutConfirm extends Controller {
     }
     
     public function updateOrderAll(){
-               $order_data = array();
+        
+        $order_data = array();
 
         $this->load->model('d_quickcheckout/order');
         $this->model_d_quickcheckout_order->getTotals($order_data['totals'], $total, $taxes);
@@ -608,12 +609,150 @@ class ControllerDQuickcheckoutConfirm extends Controller {
        $this->load->model('d_quickcheckout/order');
        /*$this->model_module_d_quickcheckout->logWrite('Controller:: confirm/updateOrder for order ='.$this->session->data['order_id'].' with $order_data =' .json_encode($order_data));*/
        $status = $this->model_d_quickcheckout_order->updateOrder($this->session->data['order_id'], $order_data);
+        $order_status_id= $status;
         if($status){
             $status = true;
         }else{
             $status = false;
         }
        
+        /* mail send */
+
+        		$language = new Language('russian');
+				$language->load('default');
+				$language->load('mail/order');
+
+				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_data['store_name'], ENT_QUOTES, 'UTF-8'), $this->session->data['order_id']);
+
+				$message  = $language->get('text_update_order') . ' ' . $this->session->data['order_id'] . "\n";
+				$message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime(date("d . F . Y "))) . "\n\n";
+
+				$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_data['language_id'] . "'");
+
+				if ($order_status_query->num_rows) {
+					$message .= $language->get('text_update_order_status') . "\n\n";
+					$message .= $order_status_query->row['name'] . "\n\n";
+				}
+
+				if ($order_data['customer_id']) {
+					$message .= $language->get('text_update_link') . "\n";
+					$message .= $order_data['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id . "\n\n";
+				}
+        
+                $message .= " <table border='1'><caption>Товари</caption><tr><th>Название</th><th>Категория</th><th>Количество</th>   <th>Цена</th><th>Общая стоимость</th></tr>";  
+                foreach ($order_data['products'] as $productss) {
+                 $message .= "<tr><td>".$productss['name']."</td><td>".$productss['model']."</td><td>".$productss['quantity']."</td>   <td>".$productss['price']."</td><td>".$productss['total']."</td></tr>";
+                 }
+                $message .=   "</table>";
+                $message .= "Товаров на: ".$order_data['totals']['0']['text']." \n\n";
+                $message .= "Контактное лицо: ".$this->request->post['contactname']." \n\n";
+                $message .= "E-mail: ".$this->request->post['email']." \n\n";
+                $message .= "Телефон: ".$this->request->post['phone']." \n\n";
+                if ($this->request->post['phone2']) {
+                            $message .= "Доп. телефон: ".$this->request->post['phone2']." \n\n";
+                        } 
+                if ($this->request->post['sposdost']) {
+                    $message .= "Способ доставки: ".$this->request->post['sposdost']." \n\n";
+                } 
+                if ($this->request->post['gorod']) {
+                    $message .= "Город: ".$this->request->post['gorod']." \n\n";
+                } 
+                if ($this->request->post['ylica']) {
+                    $message .= "Улица: ".$this->request->post['ylica']." \n\n";
+                } if ($this->request->post['dom']) {
+                    $message .= "Дом: ".$this->request->post['dom']." \n\n";
+                } if ($this->request->post['kvar']) {
+                    $message .= "Квартира: ".$this->request->post['kvar']." \n\n";
+                }
+                if ($this->request->post['com']) {
+					$message .= $language->get('text_update_comment') . "\n\n";
+					$message .= strip_tags($this->request->post['com']) . "\n\n";
+				}
+				$message .= $language->get('text_update_footer');
+
+				$mail = new Mail($this->config->get('config_mail'));
+				$mail->setTo($this->request->post['email']);
+				$mail->setFrom($this->config->get('config_email'));
+				$mail->setSender($order_data['store_name']);
+				$mail->setSubject($subject);
+				$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
+				$mail->send();
+
+        	// Admin Alert Mail
+				
+        	$language = new Language('russian');
+				$language->load('default');
+				$language->load('mail/order');
+
+				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_data['store_name'], ENT_QUOTES, 'UTF-8'), $this->session->data['order_id']);
+
+				$message  = $language->get('text_update_order') . ' ' . $this->session->data['order_id'] . "\n";
+				$message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime(date("d . F . Y "))) . "\n\n";
+
+				$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_data['language_id'] . "'");
+
+				if ($order_status_query->num_rows) {
+					$message .= $language->get('text_update_order_status') . "\n\n";
+					$message .= $order_status_query->row['name'] . "\n\n";
+				}
+
+				if ($order_data['customer_id']) {
+					$message .= $language->get('text_update_link') . "\n";
+					$message .= $order_data['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id . "\n\n";
+				}
+        
+                $message .= " <table border='1'><caption>Товари</caption><tr><th>Название</th><th>Категория</th><th>Количество</th>   <th>Цена</th><th>Общая стоимость</th></tr>";  
+                foreach ($order_data['products'] as $productss) {
+                 $message .= "<tr><td>".$productss['name']."</td><td>".$productss['model']."</td><td>".$productss['quantity']."</td>   <td>".$productss['price']."</td><td>".$productss['total']."</td></tr>";
+                 }
+                $message .=   "</table>";
+                $message .= "Товаров на: ".$order_data['totals']['0']['text']." \n\n";
+                $message .= "Контактное лицо: ".$this->request->post['contactname']." \n\n";
+                $message .= "E-mail: ".$this->request->post['email']." \n\n";
+                $message .= "Телефон: ".$this->request->post['phone']." \n\n";
+                if ($this->request->post['phone2']) {
+                            $message .= "Доп. телефон: ".$this->request->post['phone2']." \n\n";
+                        } 
+                if ($this->request->post['sposdost']) {
+                    $message .= "Способ доставки: ".$this->request->post['sposdost']." \n\n";
+                } 
+                if ($this->request->post['gorod']) {
+                    $message .= "Город: ".$this->request->post['gorod']." \n\n";
+                } 
+                if ($this->request->post['ylica']) {
+                    $message .= "Улица: ".$this->request->post['ylica']." \n\n";
+                } if ($this->request->post['dom']) {
+                    $message .= "Дом: ".$this->request->post['dom']." \n\n";
+                } if ($this->request->post['kvar']) {
+                    $message .= "Квартира: ".$this->request->post['kvar']." \n\n";
+                }
+                if ($this->request->post['com']) {
+					$message .= $language->get('text_update_comment') . "\n\n";
+					$message .= strip_tags($this->request->post['com']) . "\n\n";
+				}
+				
+
+				$mail = new Mail($this->config->get('config_mail'));
+				$mail->setTo($this->config->get('config_email'));
+				$mail->setFrom($this->config->get('config_email'));
+				$mail->setSender($order_data['store_name']);
+				$mail->setSubject($subject);
+				$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
+				$mail->send();
+       
+			
+        
+        
+        
+        
+        
+        
+        /* end mail */
+        
+        
+        
+        
+        
         
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($status));     

@@ -118,9 +118,22 @@ class ControllerModuleCallme extends Controller {
 			$text .= (($callme_module_cfg['link_page']) ? $this->language->get('text_link_page') . $this->request->post['link_page'] . "\n"  :  '') ;
 			
 			$mail->setText(html_entity_decode($text, ENT_QUOTES, 'UTF-8'));
-      		$mail->send();
-	  				
-			$data['success'] = $this->language->get('success');
+      		  var_dump($this->config->get('config_email'));
+	  		if($mail->send()){
+                
+               $data['success'] = $this->language->get('success'); 
+            }else{
+                $to = $this->config->get('config_email');
+                $subject = html_entity_decode(sprintf($email_subject, $this->request->post['name'], ENT_QUOTES, 'UTF-8'));
+                $message = $text; 
+               $headers  = "Content-type: text/html; charset=utf-8 \r\n"; 
+               $headers .= "From: Отправитель  ".$this->config->get('config_email')."\r\n"; 
+                if( mail($to, $subject, $message, $headers)){
+                     $data['success'] = $this->language->get('success'); 
+                }
+            }
+          
+			
     	
 		}
 		
@@ -163,8 +176,7 @@ class ControllerModuleCallme extends Controller {
     	$data['button_send'] = $this->language->get('button_send');
     
 		$data['action'] = $this->url->link('module/callme/open&prod_id='.$product_id);
-
-
+        
     	
 		if (isset($this->request->post['name'])) {
 			$data['name'] = $this->request->post['name'];
