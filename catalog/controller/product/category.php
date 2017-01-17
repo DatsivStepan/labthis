@@ -36,8 +36,8 @@ class ControllerProductCategory extends Controller {
 			$price2 = $this->request->get['price2'];
 			$data['price2'] = $this->request->get['price2'];
 		} else {
-			$data['price2'] = 7500;
-			$price2 = '7500';
+			$data['price2'] = 10000;
+			$price2 = '10000';
 		}
 
 		if (isset($this->request->get['order'])) {
